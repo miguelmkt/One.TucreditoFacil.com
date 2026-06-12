@@ -1,0 +1,685 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties para cores da marca */
+:root {
+  --brand-primary: #000000;
+  --brand-nav-bg: #FFFFFF;
+  --brand-nav-text: #FFFFFF;
+  --brand-footer-text: #000000;
+  --brand-footer-link: #ff9900;
+  --brand-header-nav-hover: #4ade80;
+  --brand-bg-gray: #f5f5f5;
+  --brand-secondary: #ff570e;
+}
+
+/* Classes customizadas para usar cores dinâmicas */
+@layer components {
+  .text-secondary {
+    color: var(--brand-secondary);
+  }
+  .bg-secondary {
+    background-color: var(--brand-secondary);
+  }
+  .border-secondary {
+    border-color: var(--brand-secondary);
+  }
+  .hover-secondary:hover {
+    color: var(--brand-secondary);
+  }
+  .bg-brand-gray {
+    background-color: var(--brand-bg-gray);
+  }
+  .text-footer {
+    color: var(--brand-footer-text);
+  }
+  .text-nav {
+    color: var(--brand-nav-text);
+  }
+  .hover\:text-footer-link:hover {
+    color: var(--brand-footer-link);
+  }
+  .hover\:text-header-nav:hover {
+    color: var(--brand-header-nav-hover);
+  }
+}
+
+/* Container de anúncio */
+.mobile-ad-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ad-inner {
+  width: 100%;
+  height: 320px;
+  max-height: 320px;
+  overflow: hidden;
+  position: relative;
+}
+.ad-inner .adsbygoogle {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 320px !important;
+  max-height: 320px !important;
+}
+@media (min-width: 640px) {
+  .mobile-ad-block {
+    width: 100% !important;
+    background: transparent !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 17px;
+    overflow-x: hidden;
+  }
+  body {
+  /* Artigos: remover sublinhado ao hover */
+  .article-title-link {
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+  }
+  .article-title-link:hover {
+    text-decoration: none !important;
+  }
+
+  /* Nome do autor/categoria: cor secundária ao hover */
+  .article-meta-link {
+    transition: color 0.2s;
+  }
+  .article-meta-link:hover {
+    color: var(--brand-secondary) !important; /* cor secundária do site */
+  }
+    background-color: var(--brand-bg-gray);
+    overflow-x: hidden;
+    @apply text-gray-800 antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-bold text-gray-900;
+  }
+}
+
+@layer components {
+  /* ── Info grid (cards) ── */
+  .article-info-section {
+    @apply my-8;
+  }
+  .article-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .article-info-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .article-info-card .info-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+    /* Remove underline de todos os links ao passar o mouse */
+  /* Remove underline de todos os links ao passar o mouse */
+  a,
+  a:visited {
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    text-decoration: none !important;
+  }
+  .article-info-card strong {
+    font-size: 0.95rem;
+    color: #1e293b;
+    font-weight: 700;
+  }
+  .article-info-card p {
+    font-size: 0.875rem;
+    color: #475569;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── Benefits ── */
+  .article-benefits {
+    @apply my-4 space-y-4;
+  }
+  .article-benefit-item {
+    border-left: 3px solid var(--brand-secondary);
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  .article-benefit-item strong {
+    display: block;
+    font-size: 1rem;
+    color: #166534;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .article-benefit-item p {
+    font-size: 0.9rem;
+    color: #374151;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── Pros & Cons ── */
+  .article-pros-cons {
+    @apply my-4;
+  }
+  .pros-header, .cons-header {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin: 0.75rem 0 0.5rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .pros-header {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  .cons-header {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+  .article-pro-item, .article-con-item {
+    padding: 0.4rem 0.75rem;
+    margin-bottom: 0.4rem;
+    border-radius: 6px;
+  }
+  .article-pro-item {
+    background: #f0fdf4;
+  }
+  .article-con-item {
+    background: #fff5f5;
+  }
+  .article-pro-item strong, .article-con-item strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+  }
+  .article-pro-item p, .article-con-item p {
+    font-size: 0.875rem;
+    margin: 0;
+    color: #374151;
+    line-height: 1.5;
+  }
+
+  /* ── How to ── */
+  .article-how-to {
+    @apply my-4;
+  }
+  .article-how-to p {
+    @apply mb-3;
+  }
+  .article-how-to ol {
+    @apply space-y-3;
+    counter-reset: steps;
+    list-style: none;
+    padding-left: 0;
+  }
+  .article-how-to ol li {
+    counter-increment: steps;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .article-how-to ol li::before {
+    content: counter(steps);
+    background: var(--brand-secondary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── FAQ ── */
+  .article-faq {
+    @apply my-4 space-y-2;
+  }
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .faq-item summary {
+    padding: 0.85rem 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1f2937;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9fafb;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.1rem;
+    color: #6b7280;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+  .faq-item[open] summary {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .faq-item p {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    color: #374151;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── Final box ── */
+  .article-final {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+  }
+  .article-final h2 {
+    color: #15803d !important;
+    margin-top: 0 !important;
+  }
+  .article-final p {
+    color: #166534;
+    margin-bottom: 0;
+  }
+  .btn-primary {
+    @apply inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-center;
+  }
+
+  .latest-articles {
+    font-size: 1.25rem; /* Aumenta o tamanho da fonte */
+  }
+
+  .latest-articles .article {
+    transition: background-color 0.2s ease;
+  }
+
+  .latest-articles .article:hover {
+    background-color: #f0f0f0; /* Fundo cinza claro ao passar o mouse */
+  }
+
+  @media (hover: none) {
+    .latest-articles .article:active {
+      background-color: #f0f0f0; /* Fundo cinza claro ao toque no mobile */
+    }
+  }
+
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .cookie-banner button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .cookie-banner button:hover {
+    background-color: #45a049;
+  }
+}
+
+/* ── Post content — fora do @layer para garantir prioridade máxima ── */
+.post-content {
+  font-family: 'Ubuntu Sans', system-ui, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.7;
+  font-size: 18px;
+}
+.post-content h2 {
+  font-size: 27px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.post-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.post-content p {
+  margin-bottom: 1.5em;
+  color: #1a1a1a;
+  line-height: 1.7;
+  font-size: 18px;
+}
+.post-content ul {
+  margin-left: 20px;
+  margin-bottom: 1.5em;
+  list-style: disc;
+}
+.post-content ol {
+  margin-left: 20px;
+  margin-bottom: 1.5em;
+  list-style: decimal;
+}
+.post-content li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  font-size: 16px;
+}
+.post-content strong {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.post-content a {
+  color: #1a56db;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.post-content a:hover {
+  color: #1e40af;
+}
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  margin-bottom: 1.5em;
+}
+.post-content th {
+  background: #f3f4f6;
+  color: #1a1a1a;
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+}
+.post-content td {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  color: #1a1a1a;
+}
+.post-content tr:nth-child(even) td {
+  background: #f9fafb;
+}
+
+
+
+/* ── CTA Money Button overrides ── */
+.post-content .cta-money-btn,
+.post-content .cta-money-btn a,
+.post-content .cta-money-btn span,
+.post-content a.cta-money-btn {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+@keyframes ctaBounce {
+  0%, 100% { transform: translateY(0); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+  50% { transform: translateY(-6px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+}
+
+.post-content .cta-money-btn a {
+  animation: ctaBounce 1.8s ease-in-out infinite;
+}
+
+.joinads .separador {
+  display: none !important;
+}
+
+/* AdUnit styles */
+.adunit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+.adunit .ad-label {
+  display: none;
+  order: -1;
+  font-size: 11px;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.ad-slot {
+  width: 100%;
+  display: block;
+  min-height: 0;
+  height: auto;
+  overflow: hidden;
+}
+@media (min-width: 640px) {
+  .ad-slot[data-init-min-height][data-rendering="true"],
+  .ad-slot[data-init-min-height][data-loaded="true"] {
+    min-height: 120px;
+  }
+}
+
+/* show label when slot exists (hide only if slot is collapsed) */
+.ad-slot + .ad-label {
+  display: block;
+}
+
+/* when ad-slot collapsed via inline style, ensure label hidden too */
+.ad-slot[style*="display: none"] + .ad-label {
+  display: none !important;
+}
+
+/* prevent joinads specific separators and empty gaps */
+.ad-slot[style*="display: none"] {
+  display: none !important;
+}
+
+/* Loader styles (copied from public/js/loader.js) */
+.loader{
+position:fixed;
+top:0;left:0;right:0;bottom:0;
+background:rgba(255,255,255,0.92);
+transform:translateZ(0);
+-webkit-transform:translateZ(0);
+display:flex;
+align-items:center;
+justify-content:center;
+transition:opacity .4s ease,visibility .4s ease;
+}
+
+@supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+.loader{
+background:rgba(255,255,255,0.45);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+}
+}
+
+.loader:not(.loader--show){
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+}
+
+.loader__pop{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:14px;
+}
+
+.loader__spin{
+width:54px;
+height:54px;
+border-radius:50%;
+border:7px solid rgba(81,183,85,0.15);
+border-top-color:var(--brand-secondary);
+animation:_lspin 2.2s linear infinite;
+}
+
+.loader__text{
+margin:0;
+font-family:system-ui,-apple-system,sans-serif;
+font-size:12px;
+font-weight:600;
+letter-spacing:.18em;
+text-transform:uppercase;
+color:rgba(81,183,85,0.7);
+}
+
+.loader__bar{
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:5px;
+background:rgba(81,183,85,0.2);
+overflow:hidden;
+}
+
+.loader__bar::after{
+content:'';
+position:absolute;
+top:0;
+left:-50%;
+width:50%;
+height:100%;
+background:linear-gradient(90deg,transparent,var(--brand-secondary) 50%,transparent);
+animation:_lbar 1.4s ease-in-out infinite;
+}
+
+.loader__bottom{
+position:absolute;
+bottom:48px;
+left:0;
+right:0;
+display:flex;
+justify-content:center;
+}
+
+.loader__badge{
+display:inline-flex;
+align-items:center;
+gap:9px;
+background:linear-gradient(135deg,var(--brand-secondary) 0%,#3a9c3e 100%);
+border:none;
+border-radius:14px;
+padding:9px 16px 9px 9px;
+box-shadow:0 6px 24px rgba(58,156,62,0.38),0 2px 6px rgba(0,0,0,0.10);
+color:#fff;
+font-family:system-ui,-apple-system,sans-serif;
+font-size:13px;
+font-weight:800;
+letter-spacing:.03em;
+}
+
+.loader__badge-icon{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:28px;
+height:28px;
+border-radius:7px;
+background:#fff;
+box-shadow:0 2px 6px rgba(0,0,0,0.10);
+flex-shrink:0;
+}
+
+.loader__label{
+display:inline-flex;
+align-items:baseline;
+gap:1px;
+}
+
+.loader__dots{
+display:inline;
+letter-spacing:.05em;
+}
+.loader__dots span{
+opacity:0;
+animation:_ldot 1.4s infinite;
+}
+.loader__dots span:nth-child(2){animation-delay:.2s;}
+.loader__dots span:nth-child(3){animation-delay:.4s;}
+
+@keyframes _lspin{
+to{transform:rotate(360deg);}
+}
+
+@keyframes _ldot{
+0%,80%,100%{opacity:0;}
+40%{opacity:1;}
+}
+
+/* removed initial pop animation */
+
+/* Map Join Ads loader IDs to site loader classes so Join Ads uses our styling */
+#joinadsloader__wrapper{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;transition:opacity .4s ease,visibility .4s ease;z-index:2147483647}
+@supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  #joinadsloader__wrapper{background:rgba(255,255,255,0.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+}
+#joinadsloader__wrapper:not(.loader--show){opacity:0;visibility:hidden;pointer-events:none}
+
+#joinadsloader__wrapper .loader__pop{display:flex;flex-direction:column;align-items:center;gap:14px}
+
+#joinadsloader__spinner{width:54px;height:54px;border-radius:50%;border:7px solid rgba(81,183,85,0.15);border-top-color:var(--joinads-loader-color,#51B755);animation:_lspin 2.2s linear infinite}
+
+#joinadsloader__wrapper .loader__bar{position:absolute;top:0;left:0;right:0;height:5px;background:rgba(81,183,85,0.2);overflow:hidden}
+#joinadsloader__wrapper .loader__bar::after{content:'';position:absolute;top:0;left:-50%;width:50%;height:100%;background:linear-gradient(90deg,transparent,var(--joinads-loader-color,#51B755) 50%,transparent);animation:_lbar 1.4s ease-in-out infinite}
+
+#joinadsloader__wrapper .loader__bottom{position:absolute;bottom:48px;left:0;right:0;display:flex;justify-content:center}
+#joinadsloader__wrapper .loader__badge{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--joinads-loader-color,#51B755) 0%,#3a9c3e 100%);border-radius:14px;padding:9px 16px 9px 9px;box-shadow:0 6px 24px rgba(58,156,62,0.38),0 2px 6px rgba(0,0,0,0.10);color:#fff;font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:800;letter-spacing:.03em}
+
+
+/* DynamicLoader state classes (kept intentionally empty to avoid visual changes)
+  These classes are toggled by the dynamic loader for widgets/scripts.
+  - .is-loading
+  - .is-loaded
+  - .has-error
+*/
+.is-loading {}
+.is-loaded {}
+.has-error {}
+
+/* removed initial pop animation */

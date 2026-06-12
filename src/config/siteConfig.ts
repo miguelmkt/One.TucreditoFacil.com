@@ -1,0 +1,81 @@
+/**
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║  CATEGORIAS DO SITE — edite em src/config/categories.json   ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ *
+ * Campos disponíveis por categoria:
+ *   name        → Nome exibido no site (também define as 2 linhas do menu)
+ *   slug        → URL da categoria:  /c/<slug>
+ *   active      → true = visível | false = oculta do menu, home e URL retorna 404
+ *   imageStyle  → Palavras-chave para Stable Diffusion gerar a imagem certa
+ */
+import rawCategories from './categories.json';
+
+export interface SiteCategory {
+  name:        string;
+  slug:        string;
+  slugs:       {
+    es: string;
+    pt: string;
+    en: string;
+    fr: string;
+  };
+  active:      boolean;
+  imageStyle:  string;
+}
+
+/** Todas as categorias cadastradas (incluindo inativas). */
+export const allCategories: SiteCategory[] = rawCategories as SiteCategory[];
+
+/** Apenas as categorias ativas — usadas no menu, home, scripts e SEO. */
+export const siteCategories: SiteCategory[] = allCategories.filter((c) => c.active);
+
+/**
+ * Divide o nome em 2 linhas para o menu desktop.
+ * Corta no último espaço: "Tarjetas de Crédito" → ["Tarjetas de", "Crédito"]
+ */
+export function categoryNavLines(name: string): [string, string] {
+  const i = name.lastIndexOf(' ');
+  return i === -1 ? [name, ''] : [name.slice(0, i), name.slice(i + 1)];
+}
+
+// ── Cores globais do site ────────────────────────────────────────────────────
+// Altere apenas aqui para mudar as cores em todo o site
+export const brandColors = {
+  primary: '#000000',           // cor principal (títulos footer, hover categorias header)
+  navBg: '#ffffff',             // fundo da header e do footer
+  navText: '#000000',           // cor do texto das categorias no header
+  footerText: '#000000',        // cor do texto dos títulos do footer (Sobre Nosotros, Información Legal)
+  footerLink: '#80807C',        // cor fixa dos links do footer (sem hover)
+  headerNavHover: '#ff570e',    // cor do hover das categorias na header
+  bgGray: '#f5f5f5',            // fundo cinza das páginas (Quiénes somos)
+  secondary: '#ff570e',         // cor secundária (botões, links, destaques, hover categorias)
+} as const;
+
+export const siteConfig = {
+  siteName: 'Mbwaymoney.com',
+  siteUrl: 'https://mbwaymoney.com',
+  niche: 'finanzas personales',
+  language: 'es',
+  description:
+    'Consejos prácticos de finanzas personales para mejorar tu vida económica, ahorrar más y tomar mejores decisiones con tu dinero.',
+  ctaText: 'Solicitar préstamo ahora',
+  ctaUrl: 'https://mbwaymoney.com/solicitar-prestamo',
+  twitterHandle: '@mbwaymoney',
+  contactEmail: 'hola@mbwaymoney.com',
+
+  // Imagens — altere aqui para trocar logo e favicon em todo o site renomeie para o nome da imagem que for adicionada na pasta public/assets
+  logo: '/imagens/img-principal/logo.png',
+  favicon: '/imagens/img-principal/favicon02.png',
+} as const;
+
+// Autores do site — adicione ou remova nomes aqui
+// A foto deve estar em imagens/avatar-author/<nome-em-kebab-case>.svg (ou .jpg/.png)
+export const siteAuthors: string[] = [
+  'Miguel Freitas',
+  'Carlos Almeida',
+  'Lucas Moraes',
+  'Felipe Pires',
+];
+
+

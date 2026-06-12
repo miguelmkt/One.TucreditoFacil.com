@@ -1,0 +1,64 @@
+
+
+[
+  {
+    "name":        "Educación Financiera",
+    "slug":        "educacion-financiera",
+    "slugs": {
+      "es": "educacion-financiera",
+      "pt": "educacao-financeira",
+      "en": "financial-education",
+      "fr": "education-financiere"
+    },
+    "active":      true,
+    "imageStyle":  "financial education concept, open books, graphs, piggy bank"
+  },
+  {
+    "name":        "Inversión Inteligente",
+    "slug":        "inversion-inteligente",
+    "slugs": {
+      "es": "inversion-inteligente",
+      "pt": "investimento-inteligente",
+      "en": "smart-investing",
+      "fr": "investissement-intelligent"
+    },
+    "active":      true,
+    "imageStyle":  "smart investment, stock market charts, growth arrows, portfolio"
+  },
+  {
+    "name":        "Tarjetas de Crédito",
+    "slug":        "tarjetas-credito",
+    "slugs": {
+      "es": "tarjetas-credito",
+      "pt": "cartoes-de-credito",
+      "en": "credit-cards",
+      "fr": "cartes-de-credit"
+    },
+    "active":      true,
+    "imageStyle":  "credit card, contactless payment, modern banking"
+  },
+  {
+    "name":        "Préstamos Personales",
+    "slug":        "prestamos-personales",
+    "slugs": {
+      "es": "prestamos-personales",
+      "pt": "emprestimos-pessoais",
+      "en": "personal-loans",
+      "fr": "prets-personnels"
+    },
+    "active":      true,
+    "imageStyle":  "personal loan, handshake, documents, approval stamp"
+  },
+  {
+    "name":        "Financiamiento",
+    "slug":        "financiamiento",
+    "slugs": {
+      "es": "financiamiento",
+      "pt": "financiamento",
+      "en": "financing",
+      "fr": "financement"
+    },
+    "active":      true,
+    "imageStyle":  "Financing, loan approval, mortgage documents, financial planning, calculator"
+  }
+]
