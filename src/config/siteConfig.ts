@@ -43,26 +43,26 @@ export function categoryNavLines(name: string): [string, string] {
 // Altere apenas aqui para mudar as cores em todo o site
 export const brandColors = {
   primary: '#000000',           // cor principal (títulos footer, hover categorias header)
-  navBg: '#ffffff',             // fundo da header e do footer
-  navText: '#000000',           // cor do texto das categorias no header
-  footerText: '#000000',        // cor do texto dos títulos do footer (Sobre Nosotros, Información Legal)
+  navBg: '#2C0C4B',             // fundo da header e do footer
+  navText: '#ffffff',           // cor do texto das categorias no header
+  footerText: '#ffffff',        // cor do texto dos títulos do footer (Sobre Nosotros, Información Legal)
   footerLink: '#80807C',        // cor fixa dos links do footer (sem hover)
-  headerNavHover: '#ff570e',    // cor do hover das categorias na header
+  headerNavHover: '#84C002',    // cor do hover das categorias na header
   bgGray: '#f5f5f5',            // fundo cinza das páginas (Quiénes somos)
-  secondary: '#ff570e',         // cor secundária (botões, links, destaques, hover categorias)
+  secondary: '#84C002',         // cor secundária (botões, links, destaques, hover categorias)
 } as const;
 
 export const siteConfig = {
-  siteName: 'Mbwaymoney.com',
-  siteUrl: 'https://mbwaymoney.com',
+  siteName: 'Zynovu.com',
+  siteUrl: 'https://zynovu.com',
   niche: 'finanzas personales',
   language: 'es',
   description:
     'Consejos prácticos de finanzas personales para mejorar tu vida económica, ahorrar más y tomar mejores decisiones con tu dinero.',
   ctaText: 'Solicitar préstamo ahora',
-  ctaUrl: 'https://mbwaymoney.com/solicitar-prestamo',
-  twitterHandle: '@mbwaymoney',
-  contactEmail: 'hola@mbwaymoney.com',
+  ctaUrl: 'https://zynovu.com/solicitar-prestamo',
+  twitterHandle: '@zynovu',
+  contactEmail: 'hola@zynovu.com',
 
   // Imagens — altere aqui para trocar logo e favicon em todo o site renomeie para o nome da imagem que for adicionada na pasta public/assets
   logo: '/imagens/img-principal/logo.png',
