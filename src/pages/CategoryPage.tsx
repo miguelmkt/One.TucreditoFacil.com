@@ -3,7 +3,7 @@ import { getPostsByLang } from '../data/posts';
 import { allCategories, siteCategories } from '../config/siteConfig';
 import { useSEO } from '../hooks/useSEO';
 import { useLang } from '../i18n/LangContext';
-import { SUPPORTED_LANGS } from '../i18n/translations';
+// REMOVA ESTA LINHA INTEIRA
 import { getCategoryI18n } from '../i18n/categories';
 
 // Set of inactive slugs for 404 handling
@@ -50,16 +50,13 @@ export default function CategoryPage() {
     return (category.slugs as any)[l] || category.slug;
   };
 
-  const hreflangAlternates = SUPPORTED_LANGS.map((l) => ({
-    lang: l,
-    path: `/${l === 'es' ? '' : l + '/'}c/${getSlugForLang(l)}`,
-  }));
+
 
   useSEO({
     title: isKnownSlug ? catName : undefined,
     canonicalPath: isKnownSlug ? lp(lang, `/c/${getSlugForLang(lang)}`) : undefined,
     lang,
-    hreflangAlternates: isKnownSlug ? hreflangAlternates : undefined,
+    // hreflangAlternates: isKnownSlug ? hreflangAlternates : undefined,
   });
 
   const allLangPosts = getPostsByLang(lang);
