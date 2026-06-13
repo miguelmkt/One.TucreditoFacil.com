@@ -56,7 +56,7 @@ export default function HomePage() {
 
       {/* Seções por categoria */}
       <div
-        className={`max-w-6xl mx-auto px-4 sm:px-6 ${hideTopPaddingForFirstEdu ? 'pt-0 pb-0' : 'py-10'} space-y-12`}
+        className={`max-w-6xl mx-auto px-4 sm:px-6 ${hideTopPaddingForFirstEdu ? 'pt-0 pb-10' : 'py-10 pb-10'} space-y-12`}
       >
         {grouped.map((group, idx) => (
           group.items.length > 0 && (
@@ -66,27 +66,26 @@ export default function HomePage() {
                 <a
                   href={lp(lang, `/c/${group.slugForLang}`)}
                   className="text-3xl font-bold whitespace-nowrap hover:opacity-75 transition-opacity w-full md:w-auto text-center text-[#0D1A17]"
-                  aria-hidden={group.rawSlug === 'educacion-financiera'}
                 >
                   {group.rawSlug === 'educacion-financiera' ? '' : group.name}
                 </a>
                 <span className="hidden md:block flex-1 h-px bg-gray-300" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {group.items.map((post, i) => (
+                {(idx === firstVisibleIndex ? group.items.slice(0, 1) : group.items).map((post, i) => (
                   i === 0 && idx === firstVisibleIndex ? (
                     <a
                       key={post.slug}
                       href={lp(lang, `/p/${post.slug}`)}
-                      className={`group block bg-white rounded-md shadow-sm overflow-hidden col-span-1 sm:col-span-2 lg:col-span-2 ${idx === firstVisibleIndex ? 'rounded-b-md' : ''}`}
+                      className={`group block bg-white rounded-xl shadow-sm overflow-hidden col-span-1 sm:col-span-2 lg:col-span-3 lg:max-w-[760px] lg:justify-self-start ${idx === firstVisibleIndex ? 'rounded-b-md' : ''}`}
                     >
-                      <div className="relative flex flex-col md:flex-row">
-                        <div className="w-full md:w-1/3 h-64 md:h-auto bg-gray-100 overflow-hidden flex-shrink-0 relative">
+                      <div className="relative flex flex-col">
+                        <div className="w-full h-64 md:h-[330px] bg-gray-100 overflow-hidden flex-shrink-0 relative">
                           <img
                             src={post.image}
                             alt={post.title}
                             loading="lazy"
-                            className="w-full h-full object-cover rounded-b-md md:rounded-l-md md:rounded-tr-none md:rounded-br-none"
+                            className="w-full h-full object-cover rounded-t-xl rounded-b-none"
                             onError={(e) => {
                               (e.currentTarget as HTMLImageElement).src =
                                 'https://placehold.co/800x600/e8f0fe/6366f1?text=FF';
@@ -103,9 +102,9 @@ export default function HomePage() {
                           </div>
                         </div>
 
-                        {/* Title on desktop, kept to the right so image and card stay joined */}
-                        <div className="hidden md:flex md:w-2/3 p-4 items-center">
-                          <h2 className="leading-snug text-[26px] md:text-[28px] text-[#0D1A17] font-sans font-semibold">
+                        {/* Title on desktop, placed below the image to match the featured-card layout */}
+                        <div className="hidden md:block p-6 lg:p-7">
+                          <h2 className="leading-snug text-[24px] lg:text-[26px] text-[#0D1A17] font-sans font-semibold">
                             {post.title}
                           </h2>
                         </div>
