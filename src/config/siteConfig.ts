@@ -11,6 +11,28 @@
  */
 import rawCategories from './categories.json';
 
+const FALLBACK_SITE_URL = 'https://zynovu.com';
+
+function normalizeSiteUrl(value: string): string {
+  return value.replace(/\/+$/, '');
+}
+
+function resolveSiteUrl(): string {
+  const envSiteUrl = (import.meta as ImportMeta & {
+    env?: { VITE_SITE_URL?: string };
+  }).env?.VITE_SITE_URL;
+
+  if (envSiteUrl) {
+    return normalizeSiteUrl(envSiteUrl);
+  }
+
+  if (typeof window !== 'undefined' && window.location?.origin) {
+    return normalizeSiteUrl(window.location.origin);
+  }
+
+  return FALLBACK_SITE_URL;
+}
+
 export interface SiteCategory {
   name:        string;
   slug:        string;
@@ -53,14 +75,14 @@ export const brandColors = {
 } as const;
 
 export const siteConfig = {
-  siteName: 'Zynovu.com',
-  siteUrl: 'https://zynovu.com',
+  siteName: 'zynovu.com',
+  siteUrl: resolveSiteUrl(),
   niche: 'finanzas personales',
   language: 'es',
   description:
     'Consejos prácticos de finanzas personales para mejorar tu vida económica, ahorrar más y tomar mejores decisiones con tu dinero.',
   ctaText: 'Solicitar préstamo ahora',
-  ctaUrl: 'https://zynovu.com/solicitar-prestamo',
+  ctaUrl: `${resolveSiteUrl()}/solicitar-prestamo`,
   twitterHandle: '@zynovu',
   contactEmail: 'hola@zynovu.com',
 

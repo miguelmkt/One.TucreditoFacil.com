@@ -21,7 +21,8 @@ const POSTS_DIR = join(ROOT, 'src', 'content', 'posts');
 const PUBLIC_DIR = join(ROOT, 'public');
 
 // ── Config ──────────────────────────────────────────────────────────────────
-const SITE_URL = 'https://tucreditofacil.com';
+const FALLBACK_SITE_URL = 'https://zynovu.com';
+const SITE_URL = normalizeSiteUrl(process.env.SITE_URL || process.env.VITE_SITE_URL || FALLBACK_SITE_URL);
 const SUPPORTED_LANGS = ['es', 'pt', 'en', 'fr'];
 
 // Load categories and use localized slugs when available
@@ -44,6 +45,10 @@ function escapeXml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
+}
+
+function normalizeSiteUrl(value) {
+  return value.replace(/\/+$/, '');
 }
 
 function urlEntry(loc, lastmod, priority = '0.7', changefreq = 'weekly') {
