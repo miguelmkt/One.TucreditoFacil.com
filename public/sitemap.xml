@@ -15,10 +15,17 @@
     <priority>0.8</priority>
   </url>
   <url>
+<<<<<<< HEAD
     <loc>https://zynovu.com/c/tarjetas-credito</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+=======
+    <loc>https://zynovu.com/p/ladrillos-digitales-tu-guia-para-el-crowdfunding-inmobiliario</loc>
+  </url>
+  <url>
+    <loc>https://zynovu.com/p/prestamos-personales-con-garantia-una-guia-completa</loc>
+>>>>>>> 00c9c015291ef14d33b25b2ca31c5a99ea971662
   </url>
   <url>
     <loc>https://zynovu.com/c/prestamos-personales</loc>
@@ -87,6 +94,7 @@
     <priority>0.6</priority>
   </url>
   <url>
+<<<<<<< HEAD
     <loc>https://zynovu.com/p/ladrillos-digitales-tu-guia-para-el-crowdfunding-inmobiliario</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -109,5 +117,8 @@
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+=======
+    <loc>https://zynovu.com/p/jubilacion-sin-pension-publica-claves-para-asegurar-tu-futuro</loc>
+>>>>>>> 00c9c015291ef14d33b25b2ca31c5a99ea971662
   </url>
 </urlset>
