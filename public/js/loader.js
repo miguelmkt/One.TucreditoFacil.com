@@ -83,7 +83,7 @@ font-size:12px;
 font-weight:600;
 letter-spacing:.18em;
 text-transform:uppercase;
-color:rgba(81,183,85,0.7);
+color: #7CBC02;
 }
 
 .loader__bar{position:absolute;top:0;left:0;right:0;height:5px;background:rgba(81,183,85,0.2);overflow:hidden}

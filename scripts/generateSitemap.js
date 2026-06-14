@@ -51,12 +51,9 @@ function normalizeSiteUrl(value) {
   return value.replace(/\/+$/, '');
 }
 
-function urlEntry(loc, lastmod, priority = '0.7', changefreq = 'weekly') {
+function urlEntry(loc) {
   return `  <url>
     <loc>${escapeXml(loc)}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
   </url>`;
 }
 
