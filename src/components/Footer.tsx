@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Col 2 — About */}
           <div className="flex flex-col items-start">
-            <h3 className="font-bold text-base mb-4 text-footer" style={{ color: brandColors.footerText }}>{t('aboutSection')}</h3>
+            <h3 className="font-bold text-base mb-0 text-footer" style={{ color: brandColors.footerText }}>{t('aboutSection')}</h3>
             <ul className="space-y-0">
               {sobreNosotros.map(({ labelKey, href }) => (
                 <li key={labelKey}>
@@ -69,7 +69,7 @@ export default function Footer() {
 
           {/* Col 3 — Legal */}
           <div className="flex flex-col items-start">
-            <h3 className="font-bold text-base mb-4 text-footer" style={{ color: brandColors.footerText }}>{t('legalSection')}</h3>
+            <h3 className="font-bold text-base mb-0 text-footer" style={{ color: brandColors.footerText }}>{t('legalSection')}</h3>
             <ul className="space-y-0">
               {infoLegal.map(({ labelKey, href }) => (
                 <li key={labelKey}>
