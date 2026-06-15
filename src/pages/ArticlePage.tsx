@@ -2,7 +2,7 @@ import { useLocation, useParams, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { reloadAdsSafely, attachAdSenseSpaListeners } from '../lib/adsenseSpa';
 import { getPostBySlug, getPostBySlugAndLang, getPostsByLang, getArticleTranslations } from '../data/posts';
-import { siteConfig, brandColors, siteCategories } from '../config/siteConfig';
+import { brandColors, siteCategories } from '../config/siteConfig';
 import { useSEO } from '../hooks/useSEO';
 import ArticleCard from '../components/ArticleCard';
 import AuthorBox from '../components/AuthorBox';
