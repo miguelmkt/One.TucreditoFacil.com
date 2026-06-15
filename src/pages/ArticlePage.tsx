@@ -171,15 +171,11 @@ export default function ArticlePage() {
               </a>
             </p>
 
-            <div className="bg-white overflow-hidden mb-0 pb-0">
+              <div className="bg-white overflow-hidden mb-0 pb-0">
               <img
-                src={article.image}
+                src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
                 alt={article.title}
-                className="w-full object-cover max-w-full aspect-[2/1] block rounded-[8px] border-4 border-white box-border"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src =
-                    `https://placehold.co/800x400/e2e8f0/94a3b8?text=${encodeURIComponent(siteConfig.siteName)}`;
-                }}
+                className="w-full object-cover max-w-full aspect-[2/1] block rounded-md border-4 border-white box-border"
               />
             </div>
 
@@ -287,14 +283,10 @@ export default function ArticlePage() {
                         </div>
                       </div>
                       <img
-                        src={p.image}
+                        src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
                         alt={p.title}
                         loading="lazy"
                         className="w-24 h-24 rounded-sm object-cover shrink-0"
-                        onError={(e) => {
-                          (e.currentTarget as HTMLImageElement).src =
-                            'https://placehold.co/64x64/e2e8f0/94a3b8?text=FF';
-                        }}
                       />
                     </div>
                   );

@@ -77,19 +77,15 @@ export default function HomePage() {
                     <a
                       key={post.slug}
                       href={lp(lang, `/p/${post.slug}`)}
-                      className={`group block bg-white rounded-xl shadow-sm overflow-hidden col-span-1 sm:col-span-2 lg:col-span-3 lg:max-w-[760px] lg:justify-self-start ${idx === firstVisibleIndex ? 'rounded-b-md' : ''}`}
+                      className={`group block bg-white rounded-md shadow-sm overflow-hidden col-span-1 sm:col-span-2 lg:col-span-3 lg:max-w-[760px] lg:justify-self-start ${idx === firstVisibleIndex ? 'rounded-b-md' : ''}`}
                     >
                       <div className="relative flex flex-col">
                         <div className="w-full h-64 md:h-[330px] bg-gray-100 overflow-hidden flex-shrink-0 relative">
                           <img
-                            src={post.image}
+                            src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
                             alt={post.title}
                             loading="lazy"
-                            className="w-full h-full object-cover rounded-t-xl rounded-b-none"
-                            onError={(e) => {
-                              (e.currentTarget as HTMLImageElement).src =
-                                'https://placehold.co/800x600/e8f0fe/6366f1?text=FF';
-                            }}
+                            className="w-full h-full object-cover rounded-t-md rounded-b-none"
                           />
 
                           {/* Overlay title on mobile */}
@@ -117,16 +113,12 @@ export default function HomePage() {
                       className="group flex flex-col bg-white rounded shadow-sm"
                     >
                       <div className="px-[18px] pt-[18px]">
-                        <div className="w-full aspect-[2/1] overflow-hidden rounded bg-gray-100">
+                        <div className="w-full aspect-[2/1] overflow-hidden rounded-sm bg-gray-100">
                           <img
-                            src={post.image}
+                            src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
                             alt={post.title}
                             loading="lazy"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-0"
-                            onError={(e) => {
-                              (e.currentTarget as HTMLImageElement).src =
-                                'https://placehold.co/400x300/e8f0fe/6366f1?text=FF';
-                            }}
                           />
                         </div>
                       </div>

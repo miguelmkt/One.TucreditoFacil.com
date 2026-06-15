@@ -108,19 +108,15 @@ export default function CategoryPage() {
                 <a
                   key={post.slug}
                   href={lp(lang, `/p/${post.slug}`)}
-                  className="group flex flex-col bg-white rounded shadow-sm"
+                  className="group flex flex-col bg-white rounded-sm shadow-sm"
                 >
                   <div className="px-[20px] pt-[20px]">
-                    <div className="w-full aspect-[2/1] overflow-hidden rounded bg-gray-100">
+                    <div className="w-full aspect-[2/1] overflow-hidden rounded-sm bg-gray-100">
                       <img
-                        src={post.image}
+                        src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
                         alt={post.title}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onError={(e) => {
-                          (e.currentTarget as HTMLImageElement).src =
-                            'https://placehold.co/400x300/e8f0fe/6366f1?text=FF';
-                        }}
                       />
                     </div>
                   </div>
@@ -205,14 +201,10 @@ export default function CategoryPage() {
                   </div>
                 </div>
                 <img
-                  src={post.image}
+                  src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
                   alt={post.title}
                   loading="lazy"
                   className="w-24 h-24 rounded-sm object-cover shrink-0"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src =
-                      'https://placehold.co/64x64/e2e8f0/94a3b8?text=FF';
-                  }}
                 />
               </div>
             ))}

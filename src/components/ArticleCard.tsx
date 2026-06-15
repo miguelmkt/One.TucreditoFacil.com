@@ -22,14 +22,10 @@ export default function ArticleCard({ article, lang = 'pt' }: ArticleCardProps) 
       <div style={{ padding: '16px 16px 0 16px' }}>
         <div className="w-full aspect-[2/1] overflow-hidden rounded-sm bg-gray-100">
           <img
-            src={article.image}
+            src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
             alt={article.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
             loading="lazy"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src =
-                'https://placehold.co/400x300/e8f0fe/6366f1?text=FF';
-            }}
           />
         </div>
       </div>
