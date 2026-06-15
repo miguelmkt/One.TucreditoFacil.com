@@ -113,10 +113,11 @@ export default function CategoryPage() {
                   <div className="px-[20px] pt-[20px]">
                     <div className="w-full aspect-[2/1] overflow-hidden rounded-sm bg-gray-100">
                       <img
-                        src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
+                        src={post.image && post.image.trim() ? post.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
                         alt={post.title}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
                       />
                     </div>
                   </div>
@@ -201,10 +202,11 @@ export default function CategoryPage() {
                   </div>
                 </div>
                 <img
-                  src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
+                  src={post.image && post.image.trim() ? post.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
                   alt={post.title}
                   loading="lazy"
                   className="w-24 h-24 rounded-sm object-cover shrink-0"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
                 />
               </div>
             ))}

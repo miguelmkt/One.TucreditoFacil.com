@@ -101,9 +101,10 @@ export default function P1Page() {
           {/* Coloca imagem aqui (após o CTA do conteúdo) */}
           <div className="mt-6 mb-5">
             <img
-                src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
+                src={p1.image && p1.image.trim() ? p1.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
                 alt={p1.title}
                 className="w-full object-cover aspect-[2/1] rounded-md block"
+                onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
               />
           </div>
 

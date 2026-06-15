@@ -173,9 +173,10 @@ export default function ArticlePage() {
 
               <div className="bg-white overflow-hidden mb-0 pb-0">
               <img
-                src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
+                src={article.image && article.image.trim() ? article.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
                 alt={article.title}
                 className="w-full object-cover max-w-full aspect-[2/1] block rounded-md border-4 border-white box-border"
+                onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
               />
             </div>
 
@@ -283,10 +284,11 @@ export default function ArticlePage() {
                         </div>
                       </div>
                       <img
-                        src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
+                        src={p.image && p.image.trim() ? p.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
                         alt={p.title}
                         loading="lazy"
                         className="w-24 h-24 rounded-sm object-cover shrink-0"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
                       />
                     </div>
                   );

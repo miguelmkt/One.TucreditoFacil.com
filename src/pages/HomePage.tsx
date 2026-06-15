@@ -18,6 +18,8 @@ function lp(lang: string, path: string) {
   return lang === 'es' ? path : `/${lang}${path}`;
 }
 
+const PLACEHOLDER = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF';
+
 export default function HomePage() {
   const { lang, t } = useLang();
 
@@ -82,10 +84,11 @@ export default function HomePage() {
                       <div className="relative flex flex-col">
                         <div className="w-full h-64 md:h-[330px] bg-gray-100 overflow-hidden flex-shrink-0 relative">
                           <img
-                            src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
+                            src={post.image && post.image.trim() ? post.image : PLACEHOLDER}
                             alt={post.title}
                             loading="lazy"
                             className="w-full h-full object-cover rounded-t-md rounded-b-none"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
                           />
 
                           {/* Overlay title on mobile */}
@@ -115,10 +118,11 @@ export default function HomePage() {
                       <div className="px-[18px] pt-[18px]">
                         <div className="w-full aspect-[2/1] overflow-hidden rounded-sm bg-gray-100">
                           <img
-                            src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
+                            src={post.image && post.image.trim() ? post.image : PLACEHOLDER}
                             alt={post.title}
                             loading="lazy"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-0"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
                           />
                         </div>
                       </div>

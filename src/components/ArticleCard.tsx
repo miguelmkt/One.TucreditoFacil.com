@@ -7,6 +7,7 @@ interface ArticleCardProps {
 }
 
 export default function ArticleCard({ article, lang = 'pt' }: ArticleCardProps) {
+  const PLACEHOLDER = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF';
   const d = new Date(article.date + 'T00:00:00');
   const locale = lang === 'en' ? 'en-US' : lang === 'fr' ? 'fr-FR' : lang === 'pt' ? 'pt-BR' : 'es-ES';
   const formattedDate = d.toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: 'numeric' });
@@ -22,10 +23,11 @@ export default function ArticleCard({ article, lang = 'pt' }: ArticleCardProps) 
       <div style={{ padding: '16px 16px 0 16px' }}>
         <div className="w-full aspect-[2/1] overflow-hidden rounded-sm bg-gray-100">
           <img
-            src='https://placehold.co/400x300/e8f0fe/6366f1?text=FF'
+            src={article.image && article.image.trim() ? article.image : PLACEHOLDER}
             alt={article.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
             loading="lazy"
+            onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
           />
         </div>
       </div>
