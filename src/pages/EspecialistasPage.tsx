@@ -26,7 +26,6 @@ export default function EspecialistasPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {authors.map((author) => {
             const authorUrl = lang === 'es' ? `/a/${author.slug}/` : `/${lang}/a/${author.slug}/`;
-            const titulo = author.role[lang as keyof typeof author.role] ?? author.role.es;
             const descripcion = author.shortBio[lang as keyof typeof author.shortBio] ?? author.shortBio.pt;
             return (
                 <a key={author.slug} href={authorUrl} className="bg-white rounded-sm p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow no-underline" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.07)', border: '1px solid #f3f4f6' }}>
