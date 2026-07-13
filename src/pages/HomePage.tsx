@@ -72,7 +72,7 @@ export default function HomePage() {
                   <span className="hidden md:block flex-1 h-px bg-gray-300" />
                   <a
                     href={lp(lang, `/c/${group.slugForLang}`)}
-                    className="text-3xl font-bold whitespace-nowrap hover:opacity-75 transition-opacity w-full md:w-auto text-center text-[#0D1A17]"
+                    className="text-3xl font-bold break-words hover:opacity-75 transition-opacity w-full md:w-auto text-center text-[#0D1A17]"
                   >
                     {group.rawSlug === 'educacion-financiera' ? '' : group.name}
                   </a>
