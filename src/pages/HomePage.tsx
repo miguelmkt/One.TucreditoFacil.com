@@ -40,7 +40,15 @@ export default function HomePage() {
       rawSlug: cat.slug,
       slugForLang,
       name,
-      items: posts.filter((p) => p.category === cat.slug || p.category === cat.name).slice(0, 4),
+      items: posts.filter((p) => {
+        const pSlug = (p.category ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+        const catSlugs = Object.values(cat.slugs);
+        return p.category === cat.slug
+          || p.category === cat.name
+          || pSlug === cat.slug
+          || catSlugs.includes(pSlug)
+          || catSlugs.some((s) => pSlug.startsWith(s + '-') || s.startsWith(pSlug + '-'));
+      }).slice(0, 4),
     };
   });
 
@@ -51,10 +59,6 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* Banner removido */}
-      <div className={`max-w-6xl mx-auto px-4 sm:px-6 ${hideTopPaddingForFirstEdu ? 'pt-0' : 'pt-6'}`}>
-        {/* Banner images removed by request */}
-      </div>
 
       {/* Seções por categoria */}
       <div
@@ -63,16 +67,18 @@ export default function HomePage() {
         {grouped.map((group, idx) => (
           group.items.length > 0 && (
             <section key={group.rawSlug}>
-              <div className="flex items-center gap-6 mb-8">
-                <span className="hidden md:block flex-1 h-px bg-gray-300" />
-                <a
-                  href={lp(lang, `/c/${group.slugForLang}`)}
-                  className="text-3xl font-bold whitespace-nowrap hover:opacity-75 transition-opacity w-full md:w-auto text-center text-[#0D1A17]"
-                >
-                  {group.rawSlug === 'educacion-financiera' ? '' : group.name}
-                </a>
-                <span className="hidden md:block flex-1 h-px bg-gray-300" />
-              </div>
+              {idx !== firstVisibleIndex && (
+                <div className="flex items-center gap-6 mb-8">
+                  <span className="hidden md:block flex-1 h-px bg-gray-300" />
+                  <a
+                    href={lp(lang, `/c/${group.slugForLang}`)}
+                    className="text-3xl font-bold whitespace-nowrap hover:opacity-75 transition-opacity w-full md:w-auto text-center text-[#0D1A17]"
+                  >
+                    {group.rawSlug === 'educacion-financiera' ? '' : group.name}
+                  </a>
+                  <span className="hidden md:block flex-1 h-px bg-gray-300" />
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {(idx === firstVisibleIndex ? group.items.slice(0, 1) : group.items).map((post, i) => (
                   i === 0 && idx === firstVisibleIndex ? (

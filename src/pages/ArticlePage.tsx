@@ -62,24 +62,35 @@ export default function ArticlePage() {
     : SUPPORTED_LANGS.map((l) => ({ lang: l, path: `/${l}/p/${slug}` }));
 
   function toCatSlug(raw: string): string {
-    const base = raw.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
-    const STOP = /-(de|del|la|el|y|los|las|des|du|le|les|of|the)-/gi;
-    return base.replace(STOP, '-').replace(STOP, '-')
-      .replace(/^(de|del|la|el|y|los|las|des|du|le|les|of|the)-/i, '')
-      .replace(/-(de|del|la|el|y|los|las|des|du|le|les|of|the)$/i, '');
+    return raw.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
   }
   
   function getCatSlugForLang(baseSlug: string, l: string): string {
-    const cat = siteCategories.find(c => c.slug === baseSlug);
+    const cat = siteCategories.find(c => {
+      const slugs = Object.values(c.slugs);
+      return c.slug === baseSlug
+        || slugs.includes(baseSlug)
+        || slugs.some((s) => baseSlug.startsWith(s + '-') || s.startsWith(baseSlug + '-'));
+    });
     if (!cat) return baseSlug;
     return (cat.slugs as any)[l] || cat.slug;
   }
   
   const categorySlug = article?.category ? toCatSlug(article.category) : '';
   const categorySlugForLang = getCatSlugForLang(categorySlug, lang);
+  // Find canonical slug (key in categoryTranslations) to get the correct display name
+  const canonicalCatSlug = (() => {
+    const slugs = (c: typeof siteCategories[0]) => Object.values(c.slugs);
+    const cat = siteCategories.find(c =>
+      c.slug === categorySlug
+      || slugs(c).includes(categorySlug)
+      || slugs(c).some((s) => categorySlug.startsWith(s + '-') || s.startsWith(categorySlug + '-'))
+    );
+    return cat?.slug ?? categorySlug;
+  })();
 
-  const categoryDisplay = categorySlug
-    ? getCategoryI18n(categorySlug, lang).name || article?.category || ''
+  const categoryDisplay = canonicalCatSlug
+    ? getCategoryI18n(canonicalCatSlug, lang).name || article?.category || ''
     : (article?.category || '');
 
   const authorSlug = article?.author ? authorNameToSlug(article.author) : '';
