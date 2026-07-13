@@ -1,50 +1,50 @@
 [
   {
-    "name": "Educación Financiera",
-    "slug": "educacion-financiera",
+    "name": "Estilo de Vida Pet",
+    "slug": "estilo-de-vida-pet",
     "slugs": {
-      "es": "educacion-financiera",
-      "pt": "educacao-financeira",
-      "en": "financial-education",
-      "fr": "education-financiere"
+      "es": "estilo-de-vida-con-mascotas",
+      "pt": "estilo-de-vida-pet",
+      "en": "pet-lifestyle",
+      "fr": "style-de-vie-animaux"
     },
     "active": true,
-    "imageStyle": "financial education concept, open books, graphs, piggy bank"
+    "imageStyle": "pet lifestyle, happy dog and cat at home, cozy living"
   },
   {
-    "name": "Tarjetas de Crédito",
-    "slug": "tarjetas-credito",
+    "name": "Atividades e Diversão com Pets",
+    "slug": "atividades-e-diversao-com-pets",
     "slugs": {
-      "es": "tarjetas-credito",
-      "pt": "cartoes-de-credito",
-      "en": "credit-cards",
-      "fr": "cartes-de-credit"
+      "es": "actividades-y-diversion-con-mascotas",
+      "pt": "atividades-e-diversao-com-pets",
+      "en": "activities-and-fun-with-pets",
+      "fr": "activites-et-amusement-animaux"
     },
     "active": true,
-    "imageStyle": "credit card, contactless payment, modern banking"
+    "imageStyle": "pets playing, dog fetch, cat toys, outdoor activities with animals"
   },
   {
-    "name": "Préstamos Personales",
-    "slug": "prestamos-personales",
+    "name": "Raças e Perfis de Pets",
+    "slug": "racas-e-perfis-de-pets",
     "slugs": {
-      "es": "prestamos-personales",
-      "pt": "emprestimos-pessoais",
-      "en": "personal-loans",
-      "fr": "prets-personnels"
+      "es": "razas-y-perfiles-de-mascotas",
+      "pt": "racas-e-perfis-de-pets",
+      "en": "pet-breeds-and-profiles",
+      "fr": "races-et-profils-animaux"
     },
     "active": true,
-    "imageStyle": "personal loan, handshake, documents, approval stamp"
+    "imageStyle": "dog breeds, cat breeds, pet profile, different animals portrait"
   },
   {
-    "name": "Inversión Inteligente",
-    "slug": "inversion-inteligente",
+    "name": "Curiosidades Sobre Animais de Estimação",
+    "slug": "curiosidades-sobre-animais",
     "slugs": {
-      "es": "inversion-inteligente",
-      "pt": "investimento-inteligente",
-      "en": "smart-investing",
-      "fr": "investissement-intelligent"
+      "es": "curiosidades-sobre-animales",
+      "pt": "curiosidades-sobre-animais",
+      "en": "fun-facts-about-pets",
+      "fr": "curiosites-sur-les-animaux"
     },
     "active": true,
-    "imageStyle": "smart investment, stock market charts, growth arrows, portfolio"
+    "imageStyle": "curious pets, funny animal facts, surprised cat and dog"
   }
 ]

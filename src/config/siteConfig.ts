@@ -80,7 +80,7 @@ export const siteConfig = {
   niche: 'finanzas personales',
   language: 'es',
   description:
-    'Consejos prácticos de finanzas personales para mejorar tu vida económica, ahorrar más y tomar mejores decisiones con tu dinero.',
+    'Inspire-se com conteúdos sobre convivência, locais pet friendly, tendências e experiências para aproveitar uma rotina mais agradável com seu animal de estimação.',
   ctaText: 'Solicitar préstamo ahora',
   ctaUrl: `${resolveSiteUrl()}/solicitar-prestamo`,
   twitterHandle: '@zynovu',

@@ -2,10 +2,10 @@
 import { useLang } from '../i18n/LangContext';
 
 const footerDesc: Record<string, string> = {
-  es: 'Consejos prácticos de finanzas personales para mejorar tu vida económica, ahorrar más y tomar mejores decisiones con tu dinero.',
-  pt: 'Dicas práticas de finanças pessoais para melhorar sua vida financeira, economizar mais e tomar melhores decisões com seu dinheiro.',
-  en: 'Practical personal finance tips to improve your financial life, save more, and make better decisions with your money.',
-  fr: 'Conseils pratiques en finances personnelles pour améliorer votre vie financière, économiser davantage et prendre de meilleures décisions avec votre argent.',
+  es: 'Inspírate con contenidos sobre convivencia, lugares pet friendly, tendencias y experiencias para disfrutar una rutina más agradable con tu mascota.',
+  pt: 'Inspire-se com conteúdos sobre convivência, locais pet friendly, tendências e experiências para aproveitar uma rotina mais agradável com seu animal de estimação.',
+  en: 'Get inspired with content about coexistence, pet-friendly places, trends and experiences to enjoy a more pleasant routine with your pet.',
+  fr: "Inspirez-vous avec des contenus sur la cohabitation, les endroits pet friendly, les tendances et les expériences pour profiter d'une routine plus agréable avec votre animal.",
 };
 
 export default function Footer() {
