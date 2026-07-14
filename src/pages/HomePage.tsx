@@ -56,6 +56,7 @@ export default function HomePage() {
   const firstVisibleGroup = grouped.find((g) => g.items.length > 0);
   const hideTopPaddingForFirstEdu = firstVisibleGroup?.rawSlug === 'educacion-financiera';
   const firstVisibleIndex = grouped.findIndex((g) => g.items.length > 0);
+  const secondVisibleIndex = grouped.findIndex((g, i) => i > firstVisibleIndex && g.items.length > 0);
 
   return (
     <main>
@@ -114,8 +115,8 @@ export default function HomePage() {
                     </a>
                   ))}
 
-                  {/* Sidebar — identical to CategoryPage */}
-                  <aside className="w-full lg:w-[380px] shrink-0 mt-1 lg:mt-0">
+                  {/* Sidebar — desktop only; mobile version renders after 2nd section */}
+                  <aside className="hidden lg:block lg:w-[380px] shrink-0 lg:mt-0">
                     <div
                       className="bg-white rounded latest-articles h-full flex flex-col"
                       style={{ boxShadow: '0 2px 4px rgba(0,0,0,0.06)', border: '1px solid #f3f4f6', padding: '14px' }}
@@ -166,6 +167,7 @@ export default function HomePage() {
                 </div>
               ) : (
                 /* ── Other sections: regular 4-col grid ── */
+                <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {group.items.map((post) => (
                     <a
@@ -197,7 +199,55 @@ export default function HomePage() {
                     </a>
                   ))}
                 </div>
-              )}
+                {/* Mobile sidebar — shown only after the 2nd visible section */}
+                {idx === secondVisibleIndex && (
+                  <div className="block lg:hidden mt-6">
+                    <div
+                      className="bg-white rounded latest-articles flex flex-col"
+                      style={{ boxShadow: '0 2px 4px rgba(0,0,0,0.06)', border: '1px solid #f3f4f6', padding: '14px' }}
+                    >
+                      <h3
+                        className="mb-1"
+                        style={{ fontSize: '21px', color: '#333333', fontFamily: '"Ubuntu Sans", sans-serif', fontWeight: 600 }}
+                      >
+                        {t('mostRead')}
+                      </h3>
+                      <div className="flex flex-col gap-2 mt-2">
+                        {posts.slice(1, 4).map((sidePost) => (
+                          <div
+                            key={sidePost.slug}
+                            className="flex items-center gap-3 rounded-sm border border-gray-100 article"
+                            style={{ padding: '10px' }}
+                          >
+                            <div className="flex-1 min-w-0">
+                              <a
+                                href={lp(lang, `/p/${sidePost.slug}`)}
+                                className="line-clamp-3 block leading-snug hover:underline"
+                                style={{ fontSize: '17px', color: '#333333', fontFamily: '"Ubuntu Sans", sans-serif', fontWeight: 600, marginBottom: '4px' }}
+                              >
+                                {sidePost.title}
+                              </a>
+                              <div className="flex items-center justify-between mt-1">
+                                <a href={lp(lang, `/p/${sidePost.slug}`)} className="text-sm font-semibold hover:underline text-secondary">
+                                  {t('moreArticles')} →
+                                </a>
+                                <span className="text-sm text-gray-400">{formatDate(sidePost.date, lang)}</span>
+                              </div>
+                            </div>
+                            <img
+                              src={sidePost.image && sidePost.image.trim() ? sidePost.image : PLACEHOLDER}
+                              alt={sidePost.title}
+                              loading="lazy"
+                              className="w-16 h-16 rounded-sm object-cover shrink-0"
+                              onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+                </>              )}
             </section>
           )
         ))}
