@@ -79,13 +79,14 @@ export default function HomePage() {
                   <span className="hidden md:block flex-1 h-px bg-gray-300" />
                 </div>
               )}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {(idx === firstVisibleIndex ? group.items.slice(0, 1) : group.items).map((post, i) => (
-                  i === 0 && idx === firstVisibleIndex ? (
+              {idx === firstVisibleIndex ? (
+                /* ── First section: featured card + sidebar (same as CategoryPage) ── */
+                <div className="flex flex-col lg:flex-row gap-6">
+                  {group.items.slice(0, 1).map((post) => (
                     <a
                       key={post.slug}
                       href={lp(lang, `/p/${post.slug}`)}
-                      className={`group block bg-white rounded-md shadow-sm overflow-hidden col-span-1 sm:col-span-2 lg:col-span-3 lg:max-w-[760px] lg:justify-self-start ${idx === firstVisibleIndex ? 'rounded-b-md' : ''}`}
+                      className="group block bg-white rounded-md shadow-sm overflow-hidden flex-1 min-w-0 rounded-b-md"
                     >
                       <div className="relative flex flex-col">
                         <div className="w-full h-64 md:h-[330px] bg-gray-100 overflow-hidden flex-shrink-0 relative">
@@ -96,8 +97,6 @@ export default function HomePage() {
                             className="w-full h-full object-cover rounded-t-md rounded-b-none"
                             onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
                           />
-
-                          {/* Overlay title on mobile */}
                           <div className="absolute inset-0 flex items-end md:hidden">
                             <div className="w-full bg-gradient-to-t from-black/65 to-transparent p-4">
                               <h2 className="text-[26px] leading-snug text-white font-sans font-semibold">
@@ -106,8 +105,6 @@ export default function HomePage() {
                             </div>
                           </div>
                         </div>
-
-                        {/* Title on desktop, placed below the image to match the featured-card layout */}
                         <div className="hidden md:block p-6 lg:p-7">
                           <h2 className="leading-snug text-[24px] lg:text-[26px] text-[#0D1A17] font-sans font-semibold">
                             {post.title}
@@ -115,7 +112,62 @@ export default function HomePage() {
                         </div>
                       </div>
                     </a>
-                  ) : (
+                  ))}
+
+                  {/* Sidebar — identical to CategoryPage */}
+                  <aside className="w-full lg:w-[380px] shrink-0 mt-1 lg:mt-0">
+                    <div
+                      className="bg-white rounded latest-articles h-full flex flex-col"
+                      style={{ boxShadow: '0 2px 4px rgba(0,0,0,0.06)', border: '1px solid #f3f4f6', padding: '14px' }}
+                    >
+                      <h3
+                        className="mb-1"
+                        style={{ fontSize: '21px', color: '#333333', fontFamily: '"Ubuntu Sans", sans-serif', fontWeight: 600 }}
+                      >
+                        {t('mostRead')}
+                      </h3>
+                      <div className="flex flex-col flex-1 gap-2 mt-2">
+                      {posts.slice(1, 4).map((sidePost) => (
+                        <div
+                          key={sidePost.slug}
+                          className="flex items-center gap-3 rounded-sm border border-gray-100 article flex-1"
+                          style={{ padding: '10px' }}
+                        >
+                          <div className="flex-1 min-w-0">
+                            <a
+                              href={lp(lang, `/p/${sidePost.slug}`)}
+                              className="line-clamp-3 block leading-snug hover:underline"
+                              style={{ fontSize: '17px', color: '#333333', fontFamily: '"Ubuntu Sans", sans-serif', fontWeight: 600, marginBottom: '4px' }}
+                            >
+                              {sidePost.title}
+                            </a>
+                            <div className="flex items-center justify-between mt-1">
+                              <a
+                                href={lp(lang, `/p/${sidePost.slug}`)}
+                                className="text-sm font-semibold hover:underline text-secondary"
+                              >
+                                {t('moreArticles')} →
+                              </a>
+                              <span className="text-sm text-gray-400">{formatDate(sidePost.date, lang)}</span>
+                            </div>
+                          </div>
+                          <img
+                            src={sidePost.image && sidePost.image.trim() ? sidePost.image : PLACEHOLDER}
+                            alt={sidePost.title}
+                            loading="lazy"
+                            className="w-16 h-16 rounded-sm object-cover shrink-0"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
+                          />
+                        </div>
+                      ))}
+                      </div>
+                    </div>
+                  </aside>
+                </div>
+              ) : (
+                /* ── Other sections: regular 4-col grid ── */
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {group.items.map((post) => (
                     <a
                       key={post.slug}
                       href={lp(lang, `/p/${post.slug}`)}
@@ -143,9 +195,9 @@ export default function HomePage() {
                         </h2>
                       </div>
                     </a>
-                  )
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </section>
           )
         ))}
