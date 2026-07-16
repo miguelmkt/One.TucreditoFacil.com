@@ -4,6 +4,7 @@ import { siteCategories } from '../config/siteConfig';
 import { useLang } from '../i18n/LangContext';
 import { SUPPORTED_LANGS, type TranslationKey } from '../i18n/translations';
 import { getCategoryI18n } from '../i18n/categories';
+import ResponsiveImage from '../components/ResponsiveImage';
 
 // banner images removed from layout — constants removed to avoid unused-variable errors
 
@@ -17,8 +18,6 @@ function formatDate(iso: string, lang: string) {
 function lp(lang: string, path: string) {
   return lang === 'es' ? path : `/${lang}${path}`;
 }
-
-const PLACEHOLDER = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF';
 
 export default function HomePage() {
   const { lang, t } = useLang();
@@ -91,12 +90,11 @@ export default function HomePage() {
                     >
                       <div className="relative flex flex-col">
                         <div className="w-full h-64 md:h-[330px] bg-gray-100 overflow-hidden flex-shrink-0 relative">
-                          <img
-                            src={post.image && post.image.trim() ? post.image : PLACEHOLDER}
+                          <ResponsiveImage
+                            src={post.image}
                             alt={post.title}
-                            loading="lazy"
                             className="w-full h-full object-cover rounded-t-md rounded-b-none"
-                            onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
+                            priority
                           />
                           <div className="absolute inset-0 flex items-end md:hidden">
                             <div className="w-full bg-gradient-to-t from-black/65 to-transparent p-4">
@@ -152,12 +150,11 @@ export default function HomePage() {
                               <span className="text-sm text-gray-400">{formatDate(sidePost.date, lang)}</span>
                             </div>
                           </div>
-                          <img
-                            src={sidePost.image && sidePost.image.trim() ? sidePost.image : PLACEHOLDER}
+                          <ResponsiveImage
+                            src={sidePost.image}
                             alt={sidePost.title}
-                            loading="lazy"
                             className="w-16 h-16 rounded-sm object-cover shrink-0"
-                            onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
+                            variant="thumbnail"
                           />
                         </div>
                       ))}
@@ -177,12 +174,11 @@ export default function HomePage() {
                     >
                       <div className="px-[18px] pt-[18px]">
                         <div className="w-full aspect-[2/1] overflow-hidden rounded-sm bg-gray-100">
-                          <img
-                            src={post.image && post.image.trim() ? post.image : PLACEHOLDER}
+                          <ResponsiveImage
+                            src={post.image}
                             alt={post.title}
-                            loading="lazy"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-0"
-                            onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                           />
                         </div>
                       </div>
@@ -234,12 +230,11 @@ export default function HomePage() {
                                 <span className="text-sm text-gray-400">{formatDate(sidePost.date, lang)}</span>
                               </div>
                             </div>
-                            <img
-                              src={sidePost.image && sidePost.image.trim() ? sidePost.image : PLACEHOLDER}
+                            <ResponsiveImage
+                              src={sidePost.image}
                               alt={sidePost.title}
-                              loading="lazy"
                               className="w-16 h-16 rounded-sm object-cover shrink-0"
-                              onError={(e) => { (e.currentTarget as HTMLImageElement).src = PLACEHOLDER; }}
+                              variant="thumbnail"
                             />
                           </div>
                         ))}

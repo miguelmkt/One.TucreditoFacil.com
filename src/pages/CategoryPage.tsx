@@ -5,6 +5,7 @@ import { useSEO } from '../hooks/useSEO';
 import { useLang } from '../i18n/LangContext';
 // REMOVA ESTA LINHA INTEIRA
 import { getCategoryI18n } from '../i18n/categories';
+import ResponsiveImage from '../components/ResponsiveImage';
 
 // Set of inactive slugs for 404 handling
 const INACTIVE_SLUGS = new Set(
@@ -112,12 +113,11 @@ export default function CategoryPage() {
                 >
                   <div className="px-[20px] pt-[20px]">
                     <div className="w-full aspect-[2/1] overflow-hidden rounded-sm bg-gray-100">
-                      <img
-                        src={post.image && post.image.trim() ? post.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
+                      <ResponsiveImage
+                        src={post.image}
                         alt={post.title}
-                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                       />
                     </div>
                   </div>
@@ -201,12 +201,11 @@ export default function CategoryPage() {
                     <span className="text-sm text-gray-400">{formatDate(post.date, lang)}</span>
                   </div>
                 </div>
-                <img
-                  src={post.image && post.image.trim() ? post.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
+                <ResponsiveImage
+                  src={post.image}
                   alt={post.title}
-                  loading="lazy"
                   className="w-24 h-24 rounded-sm object-cover shrink-0"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
+                  variant="thumbnail"
                 />
               </div>
             ))}

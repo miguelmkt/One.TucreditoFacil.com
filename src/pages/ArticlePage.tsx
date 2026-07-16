@@ -7,6 +7,7 @@ import { useSEO } from '../hooks/useSEO';
 import ArticleCard from '../components/ArticleCard';
 import AuthorBox from '../components/AuthorBox';
 import AdUnit from '../components/AdUnit';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { useLang } from '../i18n/LangContext';
 import { SUPPORTED_LANGS, type Lang } from '../i18n/translations';
 import { authorNameToSlug } from '../data/authors';
@@ -183,11 +184,11 @@ export default function ArticlePage() {
             </p>
 
               <div className="bg-white overflow-hidden mb-0 pb-0">
-              <img
-                src={article.image && article.image.trim() ? article.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
+              <ResponsiveImage
+                src={article.image}
                 alt={article.title}
                 className="w-full object-cover max-w-full aspect-[2/1] block rounded-md border-4 border-white box-border"
-                onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
+                priority
               />
             </div>
 
@@ -294,12 +295,11 @@ export default function ArticlePage() {
                           <span className="text-sm text-gray-400">{df}</span>
                         </div>
                       </div>
-                      <img
-                        src={p.image && p.image.trim() ? p.image : 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'}
+                      <ResponsiveImage
+                        src={p.image}
                         alt={p.title}
-                        loading="lazy"
                         className="w-24 h-24 rounded-sm object-cover shrink-0"
-                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF'; }}
+                        variant="thumbnail"
                       />
                     </div>
                   );
