@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useLocation, useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { getPostBySlug, getPostBySlugAndLang, getPostsByLang, getArticleTranslations } from '../data/posts';
 import { brandColors, siteCategories } from '../config/siteConfig';
 import { useSEO } from '../hooks/useSEO';
@@ -23,7 +22,6 @@ function lp(lang: string, path: string) {
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const { lang, t } = useLang();
-  const location = useLocation();
 
 
 
