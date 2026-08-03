@@ -6,7 +6,7 @@ import {
   SIZES_THUMBNAIL,
 } from '../lib/imageUtils';
 
-const PLACEHOLDER = 'https://placehold.co/400x300/e8f0fe/6366f1?text=FF';
+const PLACEHOLDER = '/placeholder.svg';
 
 export interface ResponsiveImageProps {
   /**

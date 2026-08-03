@@ -17,7 +17,6 @@ import { Helmet } from 'react-helmet';
 import { siteConfig, brandColors } from './config/siteConfig';
 import { LangProvider } from './i18n/LangContext';
 import { SUPPORTED_LANGS } from './i18n/translations';
-import JoinAdsLoaderComponent from './components/JoinAdsLoaderComponent';
 
 function SpanishLayout() {
   return (
@@ -62,8 +61,7 @@ function App() {
         <Helmet>
           <link rel="icon" type="image/png" href={siteConfig.favicon} />
         </Helmet>
-        <JoinAdsLoaderComponent idDomain={(import.meta as any).env?.VITE_JOINADS_ID_DOMAIN} />
-        <div className="min-h-screen flex flex-col" style={{ backgroundColor: brandColors.bgGray }}>
+<div className="min-h-screen flex flex-col" style={{ backgroundColor: brandColors.bgGray }}>
           <Routes>
             {/* Root Spanish routes (no prefix) */}
             <Route element={<SpanishLayout />}>

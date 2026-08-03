@@ -84,7 +84,6 @@ export default function P1Page() {
           <div className="-mx-[18px] sm:mx-0 w-[calc(100%+36px)] sm:w-full mt-1 mb-0 bg-white">
             <AdUnit
               adId="content1"
-              scriptSrc="https://script.joinads.me/myad24718.js"
               minHeight={10}
               className="w-full overflow-hidden bg-white pb-0"
               label={t('advertisement')}

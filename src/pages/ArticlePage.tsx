@@ -1,6 +1,5 @@
-import { useLocation, useParams, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { reloadAdsSafely, attachAdSenseSpaListeners } from '../lib/adsenseSpa';
+import { useLocation, useParams, Navigate } from 'react-router-dom';
 import { getPostBySlug, getPostBySlugAndLang, getPostsByLang, getArticleTranslations } from '../data/posts';
 import { brandColors, siteCategories } from '../config/siteConfig';
 import { useSEO } from '../hooks/useSEO';
@@ -12,13 +11,6 @@ import { useLang } from '../i18n/LangContext';
 import { SUPPORTED_LANGS, type Lang } from '../i18n/translations';
 import { authorNameToSlug } from '../data/authors';
 import { getCategoryI18n } from '../i18n/categories';
-
-declare global {
-  interface Window {
-    adsbygoogle: unknown[];
-    initAdsForSPA?: () => void;
-  }
-}
 
 declare global {
   interface Window { adsbygoogle: unknown[] }
@@ -33,20 +25,7 @@ export default function ArticlePage() {
   const { lang, t } = useLang();
   const location = useLocation();
 
-  // Força renderização dos blocos Join Ads sempre que a página monta ou a rota muda
-  useEffect(() => {
-    if (typeof window !== 'undefined' && typeof window.initAdsForSPA === 'function') {
-      window.initAdsForSPA();
-    }
-    // Fallback: dispara evento para MutationObserver
-    setTimeout(() => {
-      const evt = document.createEvent('Event');
-      evt.initEvent('spa-navigate', true, true);
-      window.dispatchEvent(evt);
-    }, 100);
-  }, [location]);
 
-  
 
   const article =
     getPostBySlugAndLang(slug ?? '', lang) ??
@@ -104,20 +83,7 @@ export default function ArticlePage() {
     hreflangAlternates,
   });
 
-  // Inicializa listeners SPA-safe para AdSense
-  useEffect(() => {
-    attachAdSenseSpaListeners();
-    reloadAdsSafely();
-    // Opcional: pode passar debounceMs/minAdHeight/skeleton
-  }, []);
-
-  
-
-  
-
-  
-
-  if (!article) {
+if (!article) {
     return <Navigate to="/404" replace />;
   }
 
@@ -140,7 +106,6 @@ export default function ArticlePage() {
             <div className="w-full sm:max-w-[640px] sm:mx-auto mt-0 pt-0">
               <AdUnit
                 adId="content1"
-                scriptSrc="https://script.joinads.me/myad24718.js"
                 minHeight={10}
                 className="w-full overflow-hidden pb-0"
                 label={t('advertisement')}
@@ -197,7 +162,6 @@ export default function ArticlePage() {
             <div className="-mx-[18px] sm:mx-0 w-[calc(100%+36px)] sm:w-full my-0 bg-white">
               <AdUnit
                 adId="content2"
-                scriptSrc="https://script.joinads.me/myad24718.js"
                 minHeight={10}
                 className="w-full overflow-hidden bg-white pb-0"
                 label={t('advertisement')}
@@ -227,7 +191,6 @@ export default function ArticlePage() {
                     <div className="flex justify-center w-full">
                       <AdUnit
                         adId="content3"
-                        scriptSrc="https://script.joinads.me/myad24718.js"
                         minHeight={10}
                         className="w-full max-w-[336px] overflow-hidden bg-white pb-0"
                         label={t('advertisement')}

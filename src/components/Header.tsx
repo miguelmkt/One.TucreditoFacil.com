@@ -44,8 +44,8 @@ export default function Header() {
 
 
   return (
-    <header className="shadow-lg px-2 py-2 sm:px-6 sm:py-3" style={{ backgroundColor: brandColors.navBg }}>
-      <div className="max-w-6xl mx-auto flex items-center h-[54px] lg:h-[87px] gap-5 px-3 py-0 sm:gap-8 sm:px-6 sm:py-3">
+    <header className="shadow-lg" style={{ backgroundColor: brandColors.navBg }}>
+      <div className="max-w-7xl mx-auto w-full flex items-center h-[64px] xl:h-[90px] gap-3 px-4 sm:gap-4 sm:px-6">
 
         {/* Logo */}
         <a
@@ -54,11 +54,11 @@ export default function Header() {
           className="flex items-center shrink-0"
           aria-label={`${siteConfig.siteName} - inicio`}
         >
-          <img src={siteConfig.logo} alt={siteConfig.siteName} className="h-12 sm:h-16 md:h-20 w-auto object-contain" />
+          <img src={siteConfig.logo} alt={siteConfig.siteName} className="h-11 xl:h-[72px] max-w-[160px] xl:max-w-[210px] w-auto object-contain" />
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10 flex-1 justify-center" aria-label="Navegación principal">
+        <nav className="hidden xl:flex items-center gap-4 2xl:gap-8 flex-1 justify-center" aria-label="Navegación principal">
           {navLinks.map((link) => (
             <a
               key={link.cat.slug}
@@ -75,11 +75,11 @@ export default function Header() {
         </nav>
 
         {/* Desktop right - search */}
-        <div className="hidden lg:flex items-center gap-3 shrink-0">
+        <div className="hidden xl:flex items-center gap-3 shrink-0">
           {/* Search */}
           <form
             onSubmit={handleSearch}
-            className="flex items-center rounded-md overflow-hidden border border-gray-200 bg-white"
+            className="flex items-center rounded overflow-hidden border border-white/20 bg-white"
             role="search"
           >
             <input
@@ -88,11 +88,11 @@ export default function Header() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('searchPlaceholder')}
               aria-label={t('searchPlaceholder')}
-              className="text-gray-800 placeholder-gray-400 text-sm px-4 w-44 outline-none border-0 h-10 bg-transparent"
+              className="text-gray-800 placeholder-gray-400 text-sm px-3 w-40 outline-none border-0 h-8 bg-transparent"
             />
             <button
               type="submit"
-              className="text-white text-sm font-semibold px-5 h-10 transition-opacity hover:opacity-90 whitespace-nowrap bg-secondary"
+              className="text-white text-sm font-semibold px-4 h-8 transition-opacity hover:opacity-90 whitespace-nowrap bg-secondary rounded-sm"
             >
               {t('search')}
             </button>
@@ -100,7 +100,7 @@ export default function Header() {
         </div>
 
         {/* Mobile icons */}
-        <div className="lg:hidden ml-auto flex items-center gap-3">
+        <div className="xl:hidden ml-auto flex items-center gap-3">
           <button
             aria-label={t('openMenu')}
             onClick={() => { setMobileNav((v) => !v); setMobileSearch(false); }}
@@ -123,7 +123,7 @@ export default function Header() {
 
       {/* Mobile Search bar */}
       {mobileSearch && (
-        <div className="lg:hidden px-4 py-3 border-t border-white/10" style={{ backgroundColor: brandColors.navBg }}>
+        <div className="xl:hidden px-4 py-3 border-t border-white/10" style={{ backgroundColor: brandColors.navBg }}>
           <form onSubmit={handleSearch} className="flex">
             <input
               type="search"
@@ -143,7 +143,7 @@ export default function Header() {
 
       {/* Mobile Nav menu */}
       {mobileNav && (
-        <div className="lg:hidden border-t border-white/10 py-3" style={{ backgroundColor: brandColors.navBg }}>
+        <div className="xl:hidden border-t border-white/10 py-3" style={{ backgroundColor: brandColors.navBg }}>
           <div className="mx-auto max-w-xs flex flex-col items-center gap-0.5 px-4">
             {navLinks.map((link) => (
               <a

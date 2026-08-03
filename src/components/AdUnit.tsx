@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import joinAdsManager from '../lib/joinAdsManager';
 
 type Props = {
   adId?: string;
@@ -12,7 +10,6 @@ type Props = {
 
 const AdUnit: React.FC<Props> = ({ adId, scriptSrc, minHeight = 120, className = '', label = 'Publicidade' }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const location = useLocation();
   const [isVisible, setIsVisible] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -66,21 +63,6 @@ const AdUnit: React.FC<Props> = ({ adId, scriptSrc, minHeight = 120, className =
       container.style.display = 'none';
     }
   }, [isVisible, scriptSrc]);
-
-  useEffect(() => {
-    const debounce = setTimeout(() => {
-      if (typeof joinAdsManager.renderAd === 'function') {
-        const container = containerRef.current;
-        if (container) {
-          joinAdsManager.renderAd(container, { scriptSrc, minHeight });
-        }
-      } else {
-        console.error('joinAdsManager.renderAd is not a function');
-      }
-    }, 300);
-
-    return () => clearTimeout(debounce);
-  }, [location.pathname]);
 
   return (
     <div className={`ad-unit-wrapper ${className}`} style={{ textAlign: 'center', minHeight: `${minHeight}px` }}>
