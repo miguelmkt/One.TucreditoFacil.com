@@ -17,4 +17,8 @@ export default defineConfig({
     }),
   ],
   publicDir: 'public',
+  build: {
+    minify: false,
+    cssMinify: false,
+  },
 })
