@@ -85,7 +85,12 @@ export function normalizeSrcToPath(src: string): string | null {
   if (isExternalUrl(src)) return null;
 
   // Caminho local — remover barra inicial
-  return src.startsWith('/') ? src.slice(1) : src;
+  const localPath = src.startsWith('/') ? src.slice(1) : src;
+
+  // Filename puro (sem "/" nem "http") → prefixar com zynovu.com/
+  if (!localPath.includes('/')) return `zynovu.com/${localPath}`;
+
+  return localPath;
 }
 
 /**
