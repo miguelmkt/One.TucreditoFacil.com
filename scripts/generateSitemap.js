@@ -112,46 +112,28 @@ for (const lang of SUPPORTED_LANGS) {
     entries.push(urlEntry(`${prefix}/a/${authorSlug}/`, today, '0.6', 'weekly'));
   }
 
-  // All posts are accessible in every language via /{lang}/p/:slug
-  for (const post of allPosts) {
+  // Articles for this language
+  const langPosts = allPosts.filter((p) => p.lang === lang);
+  for (const post of langPosts) {
     const lastmod = post.date ?? today;
     entries.push(urlEntry(`${prefix}/p/${post.slug}`, lastmod, '0.7', 'weekly'));
   }
 
   const xml = xmlDoc(entries);
+  // For Spanish (root) generate sitemap-es.xml at public/, for others use /{lang}/sitemap.xml
   if (lang === 'es') {
-    const outPath = join(PUBLIC_DIR, 'sitemap-es.xml');
+    // Write Spanish sitemap to the site root (no /es prefix)
+    const outPath = join(PUBLIC_DIR, 'sitemap.xml');
     writeFileSync(outPath, xml, 'utf8');
-    console.log(`✓ sitemap-es.xml (Spanish) — ${allPosts.length} articles`);
+    console.log(`✓ sitemap.xml (root, Spanish) — ${langPosts.length} articles`);
   } else {
     const langDir = join(PUBLIC_DIR, lang);
     if (!existsSync(langDir)) mkdirSync(langDir, { recursive: true });
     const outPath = join(langDir, 'sitemap.xml');
     writeFileSync(outPath, xml, 'utf8');
-    console.log(`✓ ${lang}/sitemap.xml — ${allPosts.length} articles`);
+    console.log(`✓ ${lang}/sitemap.xml — ${langPosts.length} articles`);
   }
 }
 
-// ── Generate sitemap index ───────────────────────────────────────────────────
-function sitemapIndexDoc(entries) {
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${entries.join('\n')}
-</sitemapindex>`;
-}
-
-function sitemapEntry(loc) {
-  return `  <sitemap>
-    <loc>${escapeXml(loc)}</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>`;
-}
-
-const indexEntries = [
-  sitemapEntry(`${SITE_URL}/sitemap-es.xml`),
-  sitemapEntry(`${SITE_URL}/pt/sitemap.xml`),
-  sitemapEntry(`${SITE_URL}/en/sitemap.xml`),
-  sitemapEntry(`${SITE_URL}/fr/sitemap.xml`),
-];
-writeFileSync(join(PUBLIC_DIR, 'sitemap.xml'), sitemapIndexDoc(indexEntries), 'utf8');
-console.log(`✓ sitemap.xml (index) — 4 sitemaps`);
+// Note: we intentionally do not generate a sitemap index here because
+// the root `public/sitemap.xml` is the Spanish sitemap (no /es prefix).
