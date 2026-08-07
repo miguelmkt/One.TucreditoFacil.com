@@ -103,11 +103,10 @@ if (!article) {
           <div className="w-screen mt-0 pt-1" style={{ backgroundColor: brandColors.bgGray }}>
             <div className="w-full sm:max-w-[640px] sm:mx-auto mt-0 pt-0">
               <AdUnit
-                html={`<!-- bloco_p1 -->
-<ins class="adsbygoogle"
+                html={`<ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-5353240549344602"
-     data-ad-slot="7483788284"
+     data-ad-slot="2486655972"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>
