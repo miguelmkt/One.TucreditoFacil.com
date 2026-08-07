@@ -45,39 +45,38 @@ export default function Header() {
 
   return (
     <header className="shadow-lg" style={{ backgroundColor: brandColors.navBg }}>
-      <div className="max-w-7xl mx-auto w-full flex items-center justify-center h-[64px] xl:h-[90px] gap-3 px-4 sm:gap-4 sm:px-6">
+      <div className="max-w-7xl mx-auto w-full flex items-center justify-between xl:justify-center h-[64px] xl:h-[90px] gap-3 px-4 sm:gap-4 sm:px-6">
 
         <div className="flex items-center gap-4">
           {/* Logo */}
           <a
             href={homeHref}
             onClick={closeAll}
-            className="flex items-center flex-shrink-0 mr-8"
+            className="flex items-center flex-shrink-0"
             aria-label={`${siteConfig.siteName} - inicio`}
           >
             <img src={siteConfig.logo} alt={siteConfig.siteName} className="h-11 xl:h-[72px] max-w-[160px] xl:max-w-[210px] w-auto object-contain" />
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center gap-4 2xl:gap-8 flex-none mr-8" aria-label="Navegación principal">
-          {navLinks.map((link) => (
-            <a
-              key={link.cat.slug}
-              href={catHref(link.cat)}
-              className="text-white/100 transition-colors text-[16px] text-center font-medium flex flex-col items-center leading-[1.25] text-nav"
-              style={{ color: brandColors.navText }}
-              onMouseEnter={e => (e.currentTarget.style.color = brandColors.headerNavHover)}
-              onMouseLeave={e => (e.currentTarget.style.color = brandColors.navText)}
-            >
-              <span className="whitespace-nowrap">{link.line1}</span>
-              <span className="whitespace-nowrap">{link.line2}</span>
-            </a>
-          ))}
-        </nav>
+          <nav className="hidden xl:flex items-center gap-4 2xl:gap-8 flex-none" aria-label="Navegación principal">
+            {navLinks.map((link) => (
+              <a
+                key={link.cat.slug}
+                href={catHref(link.cat)}
+                className="text-white/100 transition-colors text-[16px] text-center font-medium flex flex-col items-center leading-[1.25] text-nav"
+                style={{ color: brandColors.navText }}
+                onMouseEnter={e => (e.currentTarget.style.color = brandColors.headerNavHover)}
+                onMouseLeave={e => (e.currentTarget.style.color = brandColors.navText)}
+              >
+                <span className="whitespace-nowrap">{link.line1}</span>
+                <span className="whitespace-nowrap">{link.line2}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
 
-          {/* Desktop right - search */}
-          <div className="hidden xl:flex items-center gap-3 shrink-0">
-          {/* Search */}
+        <div className="hidden xl:flex items-center gap-3 shrink-0">
           <form
             onSubmit={handleSearch}
             className="flex items-center rounded overflow-hidden border border-white/20 bg-white"
@@ -100,15 +99,13 @@ export default function Header() {
           </form>
         </div>
 
-        {/* Mobile icons */}
-        <div className="xl:hidden ml-auto flex items-center gap-3">
+        <div className="xl:hidden flex items-center">
           <button
             aria-label={t('openMenu')}
             onClick={() => { setMobileNav((v) => !v); setMobileSearch(false); }}
             className="transition-colors flex items-center"
             style={{ color: 'var(--brand-secondary)' }}
           >
-            {/* SVG fornecido pelo usuário */}
             <svg viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32" style={{display: 'block'}}>
               <path d="M3 18.667h18a1 1 0 0 1 .117 1.993l-.117.007H3a1 1 0 0 1-.117-1.994zh18zm0-6 7-.002a1 1 0 0 1 .117 1.993l-.117.007-7 .002a1 1 0 0 1-.117-1.994zl7-.002zm0-6h7a1 1 0 0 1 .117 1.993L10 8.667H3a1 1 0 0 1-.117-1.994zh7zM21 1.5a7.5 7.5 0 0 1 5.964 12.048l4.743 4.745a1 1 0 0 1-1.32 1.497l-.094-.083-4.745-4.743A7.5 7.5 0 1 1 21 1.5m0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11"
                 fill="currentColor"
@@ -119,7 +116,6 @@ export default function Header() {
               />
             </svg>
           </button>
-        </div>
         </div>
       </div>
 
