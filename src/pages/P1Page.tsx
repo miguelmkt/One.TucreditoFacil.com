@@ -1,6 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import AdUnit from '../components/AdUnit';
 import { getP1BySlug, getP1BySlugAndLang } from '../lib/p1';
 import { siteConfig } from '../config/siteConfig';
 import { useSEO } from '../hooks/useSEO';
@@ -17,9 +16,7 @@ function lp(lang: string, path: string) {
 
 export default function P1Page() {
   const { slug } = useParams<{ slug: string }>();
-  const { lang, t } = useLang();
-
-  
+  const { lang } = useLang();
 
   const p1 = getP1BySlugAndLang(slug ?? '', lang) ?? getP1BySlug(slug ?? '');
 
