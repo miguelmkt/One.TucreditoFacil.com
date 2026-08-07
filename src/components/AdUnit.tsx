@@ -60,20 +60,24 @@ const AdUnit: React.FC<Props> = ({ adId, scriptSrc, html, minHeight = 120, class
     try {
       if (html) {
         container.innerHTML = html;
-        const scripts = Array.from(container.querySelectorAll('script'));
-        scripts.forEach((oldScript) => {
-          const script = document.createElement('script');
-          if (oldScript.src) {
-            script.src = oldScript.src;
-            script.async = true;
-          }
-          if (oldScript.type) {
-            script.type = oldScript.type;
-          }
-          if (oldScript.textContent) {
-            script.textContent = oldScript.textContent;
-          }
-          oldScript.parentNode?.replaceChild(script, oldScript);
+        container.style.display = 'block';
+        container.style.width = '100%';
+        requestAnimationFrame(() => {
+          const scripts = Array.from(container.querySelectorAll('script'));
+          scripts.forEach((oldScript) => {
+            const script = document.createElement('script');
+            if (oldScript.src) {
+              script.src = oldScript.src;
+              script.async = true;
+            }
+            if (oldScript.type) {
+              script.type = oldScript.type;
+            }
+            if (oldScript.textContent) {
+              script.textContent = oldScript.textContent;
+            }
+            oldScript.parentNode?.replaceChild(script, oldScript);
+          });
         });
       } else {
         if (scriptSrc) {
