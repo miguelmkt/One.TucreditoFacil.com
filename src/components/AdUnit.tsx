@@ -11,7 +11,7 @@ type Props = {
 
 const AdUnit: React.FC<Props> = ({ adId, scriptSrc, html, minHeight = 120, className = '', label = 'Publicidade' }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(!!html);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -21,6 +21,11 @@ const AdUnit: React.FC<Props> = ({ adId, scriptSrc, html, minHeight = 120, class
     const id = adId || `ad-slot-${Math.random().toString(36).slice(2, 8)}`;
     container.id = id;
     container.style.minHeight = `${minHeight}px`;
+
+    if (html) {
+      setIsVisible(true);
+      return;
+    }
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
@@ -44,7 +49,7 @@ const AdUnit: React.FC<Props> = ({ adId, scriptSrc, html, minHeight = 120, class
       observerRef.current = null;
       container.innerHTML = '';
     };
-  }, [adId, minHeight]);
+  }, [adId, minHeight, html]);
 
   useEffect(() => {
     if (!isVisible) return;
@@ -70,14 +75,16 @@ const AdUnit: React.FC<Props> = ({ adId, scriptSrc, html, minHeight = 120, class
           }
           oldScript.parentNode?.replaceChild(script, oldScript);
         });
-      } else if (scriptSrc) {
-        const script = document.createElement('script');
-        script.src = scriptSrc;
-        script.async = true;
-        container.appendChild(script);
+      } else {
+        if (scriptSrc) {
+          const script = document.createElement('script');
+          script.src = scriptSrc;
+          script.async = true;
+          container.appendChild(script);
+        }
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.push({});
       }
-      window.adsbygoogle = window.adsbygoogle || [];
-      window.adsbygoogle.push({});
     } catch (error) {
       console.error('Failed to load ad script:', error);
       container.style.display = 'none';
