@@ -1,4 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { getPostBySlug, getPostBySlugAndLang, getPostsByLang, getArticleTranslations } from '../data/posts';
 import { brandColors, siteCategories } from '../config/siteConfig';
 import { useSEO } from '../hooks/useSEO';
@@ -32,6 +33,18 @@ export default function ArticlePage() {
   const translations = article?.translationKey
     ? getArticleTranslations(article.translationKey)
     : [];
+
+  useEffect(() => {
+    try {
+      const ads = document.querySelectorAll('.adsbygoogle');
+      ads.forEach(() => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.push({});
+      });
+    } catch (e) {
+      /* noop */
+    }
+  }, []);
 
   const hreflangAlternates = translations.length > 0
     ? translations
@@ -102,13 +115,20 @@ if (!article) {
     <>
           <div className="w-screen mt-0 pt-1" style={{ backgroundColor: brandColors.bgGray }}>
             <div className="w-full sm:max-w-[640px] sm:mx-auto mt-0 pt-0">
-              <AdUnit
-                adId="content1"
-                minHeight={10}
-                className="w-full overflow-hidden pb-0"
-                label={t('advertisement')}
-              />
-            </div>
+            <div
+              className="w-full overflow-hidden pb-0"
+              dangerouslySetInnerHTML={{ __html: `<!-- bloco_p1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5353240549344602"
+     data-ad-slot="7483788284"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>` }}
+            />
+          </div>
           </div>
       
 

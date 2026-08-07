@@ -82,11 +82,18 @@ export default function P1Page() {
 
           {/* Adex abaixo do título (formato P2) */}
           <div className="-mx-[18px] sm:mx-0 w-[calc(100%+36px)] sm:w-full mt-1 mb-0 bg-white">
-            <AdUnit
-              adId="content1"
-              minHeight={10}
+            <div
               className="w-full overflow-hidden bg-white pb-0"
-              label={t('advertisement')}
+              dangerouslySetInnerHTML={{ __html: `<!-- bloco_p1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5353240549344602"
+     data-ad-slot="7483788284"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>` }}
             />
           </div>
 
