@@ -3,12 +3,13 @@ import React, { useEffect, useRef, useState } from 'react';
 type Props = {
   adId?: string;
   scriptSrc?: string;
+  html?: string;
   minHeight?: number;
   className?: string;
   label?: string;
 };
 
-const AdUnit: React.FC<Props> = ({ adId, scriptSrc, minHeight = 120, className = '', label = 'Publicidade' }) => {
+const AdUnit: React.FC<Props> = ({ adId, scriptSrc, html, minHeight = 120, className = '', label = 'Publicidade' }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -52,17 +53,36 @@ const AdUnit: React.FC<Props> = ({ adId, scriptSrc, minHeight = 120, className =
     if (!container) return;
 
     try {
-      if (scriptSrc) {
+      if (html) {
+        container.innerHTML = html;
+        const scripts = Array.from(container.querySelectorAll('script'));
+        scripts.forEach((oldScript) => {
+          const script = document.createElement('script');
+          if (oldScript.src) {
+            script.src = oldScript.src;
+            script.async = true;
+          }
+          if (oldScript.type) {
+            script.type = oldScript.type;
+          }
+          if (oldScript.textContent) {
+            script.textContent = oldScript.textContent;
+          }
+          oldScript.parentNode?.replaceChild(script, oldScript);
+        });
+      } else if (scriptSrc) {
         const script = document.createElement('script');
         script.src = scriptSrc;
         script.async = true;
         container.appendChild(script);
       }
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.push({});
     } catch (error) {
       console.error('Failed to load ad script:', error);
       container.style.display = 'none';
     }
-  }, [isVisible, scriptSrc]);
+  }, [isVisible, html, scriptSrc]);
 
   return (
     <div className={`ad-unit-wrapper ${className}`} style={{ textAlign: 'center', minHeight: `${minHeight}px` }}>

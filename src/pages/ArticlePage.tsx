@@ -115,9 +115,8 @@ if (!article) {
     <>
           <div className="w-screen mt-0 pt-1" style={{ backgroundColor: brandColors.bgGray }}>
             <div className="w-full sm:max-w-[640px] sm:mx-auto mt-0 pt-0">
-            <div
-              className="w-full overflow-hidden pb-0"
-              dangerouslySetInnerHTML={{ __html: `<!-- bloco_p1 -->
+              <AdUnit
+                html={`<!-- bloco_p1 -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-5353240549344602"
@@ -126,9 +125,12 @@ if (!article) {
      data-full-width-responsive="true"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script>` }}
-            />
-          </div>
+</script>`}
+                minHeight={10}
+                className="w-full overflow-hidden pb-0"
+                label={t('advertisement')}
+              />
+            </div>
           </div>
       
 
@@ -179,7 +181,14 @@ if (!article) {
              
             <div className="-mx-[18px] sm:mx-0 w-[calc(100%+36px)] sm:w-full my-0 bg-white">
               <AdUnit
-                adId="content2"
+                html={`<!-- content2 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:335px;height:310px"
+     data-ad-client="ca-pub-5353240549344602"
+     data-ad-slot="2952459750"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`}
                 minHeight={10}
                 className="w-full overflow-hidden bg-white pb-0"
                 label={t('advertisement')}
@@ -208,7 +217,16 @@ if (!article) {
                   <div className="w-full my-6">
                     <div className="flex justify-center w-full">
                       <AdUnit
-                        adId="content3"
+                        html={`<!-- content 3 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5353240549344602"
+     data-ad-slot="3850608459"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`}
                         minHeight={10}
                         className="w-full max-w-[336px] overflow-hidden bg-white pb-0"
                         label={t('advertisement')}

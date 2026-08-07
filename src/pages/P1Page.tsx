@@ -1,5 +1,6 @@
 import { useParams, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import AdUnit from '../components/AdUnit';
 import { getP1BySlug, getP1BySlugAndLang } from '../lib/p1';
 import { siteConfig } from '../config/siteConfig';
 import { useSEO } from '../hooks/useSEO';
@@ -16,7 +17,7 @@ function lp(lang: string, path: string) {
 
 export default function P1Page() {
   const { slug } = useParams<{ slug: string }>();
-  const { lang } = useLang();
+  const { lang, t } = useLang();
 
   const p1 = getP1BySlugAndLang(slug ?? '', lang) ?? getP1BySlug(slug ?? '');
 
@@ -79,9 +80,8 @@ export default function P1Page() {
 
           {/* Adex abaixo do título (formato P2) */}
           <div className="-mx-[18px] sm:mx-0 w-[calc(100%+36px)] sm:w-full mt-1 mb-0 bg-white">
-            <div
-              className="w-full overflow-hidden bg-white pb-0"
-              dangerouslySetInnerHTML={{ __html: `<!-- bloco_p1 -->
+            <AdUnit
+              html={`<!-- bloco_p1 -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-5353240549344602"
@@ -90,7 +90,10 @@ export default function P1Page() {
      data-full-width-responsive="true"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script>` }}
+</script>`}
+              minHeight={10}
+              className="w-full overflow-hidden bg-white pb-0"
+              label={t('advertisement')}
             />
           </div>
 
