@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import AdUnit from '../components/AdUnit';
 import { getP1BySlug, getP1BySlugAndLang } from '../lib/p1';
@@ -26,6 +27,10 @@ export default function P1Page() {
     canonicalPath: p1 ? lp(lang, `/l/${p1.slug}`) : undefined,
     lang,
   });
+
+  useEffect(() => {
+    window.adsbygoogle = window.adsbygoogle || [];
+  }, []);
 
   if (!p1) return <Navigate to="/404" replace />;
 
