@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLang } from '../i18n/LangContext';
 import { authors } from '../data/authors';
 
