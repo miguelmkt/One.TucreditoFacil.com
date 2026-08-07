@@ -2,7 +2,7 @@
  * Image CDN utilities — gera URLs para o redimensionador
  *
  * Formato do CDN: https://{IMG_CDN_BASE}/{width}/{height}/{quality}/{imagePath}
- * Exemplo:        https://cdn.zynovu.com/800/0/85/imagens/img-post/foo.png
+ * Exemplo:        https://cdn.one.tucreditofacil.com/800/0/85/imagens/img-post/foo.png
  *
  * Para substituir o domínio, defina VITE_IMG_CDN_URL no arquivo .env
  */
@@ -10,7 +10,7 @@
 /** Base URL do redimensionador. Configurável via VITE_IMG_CDN_URL. */
 export const IMG_CDN_BASE: string =
   (import.meta.env?.VITE_IMG_CDN_URL as string | undefined) ??
-  'https://cdn.zynovu.com';
+  'https://cdn.one.tucreditofacil.com';
 
 /** Larguras (px) usadas para gerar os descritores do srcset. */
 export const SRCSET_WIDTHS = [320, 480, 640, 768, 960, 1200, 1600, 1920] as const;
@@ -38,14 +38,14 @@ export function isExternalUrl(src: string): boolean {
 /**
  * Se a URL for do próprio CDN, extrai e retorna apenas o imagePath.
  * Suporta dois formatos:
- *   - Com dimensões:  https://cdn.zynovu.com/700/350/70/zynovu.com/foo.png  → "zynovu.com/foo.png"
- *   - Sem dimensões:  https://cdn.zynovu.com/zynovu.com/foo.png             → "zynovu.com/foo.png"
+ *   - Com dimensões:  https://cdn.one.tucreditofacil.com/700/350/70/one.tucreditofacil.com/foo.png  → "one.tucreditofacil.com/foo.png"
+ *   - Sem dimensões:  https://cdn.one.tucreditofacil.com/one.tucreditofacil.com/foo.png             → "one.tucreditofacil.com/foo.png"
  * Retorna null se não for uma URL deste CDN.
  */
 export function extractCdnPath(url: string): string | null {
   if (!url.startsWith(IMG_CDN_BASE + '/')) return null;
 
-  // Remove o prefixo base: "zynovu.com/700/350/70/zynovu.com/foo.png"
+  // Remove o prefixo base: "one.tucreditofacil.com/700/350/70/one.tucreditofacil.com/foo.png"
   const afterBase = url.slice(IMG_CDN_BASE.length + 1);
   const segments = afterBase.split('/');
 
@@ -70,8 +70,8 @@ export function extractCdnPath(url: string): string | null {
  *
  * Casos tratados:
  *  - Caminho local:  /imagens/foo.png          → "imagens/foo.png"
- *  - URL CDN com dim: https://cdn.zynovu.com/700/350/70/path → "path"
- *  - URL CDN sem dim: https://cdn.zynovu.com/path             → "path"
+ *  - URL CDN com dim: https://cdn.one.tucreditofacil.com/700/350/70/path → "path"
+ *  - URL CDN sem dim: https://cdn.one.tucreditofacil.com/path             → "path"
  *  - URL externa:    https://outro.com/foo.png → null
  */
 export function normalizeSrcToPath(src: string): string | null {
@@ -87,8 +87,8 @@ export function normalizeSrcToPath(src: string): string | null {
   // Caminho local — remover barra inicial
   const localPath = src.startsWith('/') ? src.slice(1) : src;
 
-  // Filename puro (sem "/" nem "http") → prefixar com zynovu.com/
-  if (!localPath.includes('/')) return `zynovu.com/${localPath}`;
+  // Filename puro (sem "/" nem "http") → prefixar com one.tucreditofacil.com/
+  if (!localPath.includes('/')) return `one.tucreditofacil.com/${localPath}`;
 
   return localPath;
 }
@@ -112,7 +112,7 @@ export function buildCdnUrl(
 
 /**
  * Constrói o atributo `srcset` completo com todos os SRCSET_WIDTHS.
- * Exemplo: "https://cdn.zynovu.com/320/0/85/imagens/foo.png 320w, ..."
+ * Exemplo: "https://cdn.one.tucreditofacil.com/320/0/85/imagens/foo.png 320w, ..."
  */
 export function buildSrcSet(imagePath: string, quality = DEFAULT_QUALITY): string {
   return SRCSET_WIDTHS.map(

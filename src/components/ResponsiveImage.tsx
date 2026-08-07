@@ -45,7 +45,7 @@ export interface ResponsiveImageProps {
  *
  * Gera automaticamente `srcset` e `sizes` para os tamanhos
  * 320 / 480 / 640 / 768 / 960 / 1200 / 1600 / 1920 px, usando o
- * redimensionador em https://cdn.zynovu.com/{width}/0/{quality}/{path}.
+ * redimensionador em https://cdn.one.tucreditofacil.com/{width}/0/{quality}/{path}.
  *
  * Imagens externas (http/https) não passam pelo CDN.
  */

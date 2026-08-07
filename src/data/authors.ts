@@ -16,22 +16,22 @@ export const authors: AuthorData[] = [
     slug: 'miguel-freitas',
     image: '/imagens/avatar-author/miguel-freitas.svg',
     role: {
-      es: 'Editor & Especialista en Vida con Mascotas',
-      pt: 'Editor & Especialista em Vida com Pets',
-      en: 'Editor & Pet Lifestyle Specialist',
-      fr: 'Éditeur & Spécialiste de la Vie avec les Animaux',
+      es: 'Editor & Especialista en Finanzas Personales',
+      pt: 'Editor & Especialista em Finanças Pessoais',
+      en: 'Editor & Personal Finance Specialist',
+      fr: 'Éditeur & Spécialiste en Finances Personnelles',
     },
     bio: {
-      es: `Miguel Freitas, de 38 años, es apasionado por los animales y lidera la estrategia editorial de ${siteConfig.siteName}. Con años de experiencia creando contenidos sobre vida con mascotas, inspira a tutores a disfrutar cada momento junto a sus compañeros de cuatro patas.\n\nSu misión es mostrar que convivir con animales de estimación puede ser aún más rico y placentero con las orientaciones correctas. En ${siteConfig.siteName}, Miguel reúne consejos prácticos, destinos pet friendly y tendencias para quienes quieren lo mejor para sus mascotas.`,
-      pt: `Miguel Freitas, de 38 anos, é apaixonado por animais e lidera a estratégia editorial do ${siteConfig.siteName}. Com anos de experiência criando conteúdos sobre vida com pets, ele inspira tutores a aproveitarem cada momento ao lado dos seus companheiros de quatro patas.\n\nSua missão é mostrar que conviver com animais de estimação pode ser ainda mais rico e prazeroso com as orientações certas. No ${siteConfig.siteName}, Miguel reúne dicas práticas, destinos pet friendly e tendências para quem quer o melhor para seus pets.`,
-      en: `Miguel Freitas, 38, is passionate about animals and leads the editorial strategy at ${siteConfig.siteName}. With years of experience creating content about life with pets, he inspires owners to enjoy every moment alongside their four-legged companions.\n\nHis mission is to show that living with pets can be even richer and more enjoyable with the right guidance. At ${siteConfig.siteName}, Miguel gathers practical tips, pet-friendly destinations and trends for those who want the best for their animals.`,
-      fr: `Miguel Freitas, 38 ans, est passionné par les animaux et dirige la stratégie éditoriale de ${siteConfig.siteName}. Fort de nombreuses années d'expérience dans la création de contenus sur la vie avec les animaux, il inspire les propriétaires à profiter de chaque instant avec leurs compagnons à quatre pattes.\n\nSa mission est de montrer que cohabiter avec des animaux de compagnie peut être encore plus enrichissant avec les bons conseils. Chez ${siteConfig.siteName}, Miguel rassemble des astuces pratiques, des destinations pet friendly et les dernières tendances pour ceux qui veulent le meilleur pour leurs animaux.`,
+      es: `Miguel Freitas, de 38 años, lidera la estrategia editorial de ${siteConfig.siteName} con foco en finanzas personales. Con años de experiencia produciendo guías sobre ahorro, inversión y planificación financiera, ayuda a lectores a tomar decisiones informadas para mejorar su economía personal.`,
+      pt: `Miguel Freitas, de 38 anos, lidera a estratégia editorial do ${siteConfig.siteName} com foco em finanças pessoais. Com anos de experiência produzindo guias sobre poupança, investimento e planejamento financeiro, ajuda leitores a tomarem decisões informadas para melhorar sua economia pessoal.`,
+      en: `Miguel Freitas, 38, leads the editorial strategy at ${siteConfig.siteName} focusing on personal finance. With years of experience creating guides on saving, investing and financial planning, he helps readers make informed decisions to improve their personal finances.`,
+      fr: `Miguel Freitas, 38 ans, dirige la stratégie éditoriale de ${siteConfig.siteName} axée sur les finances personnelles. Fort de plusieurs années d'expérience dans la création de guides sur l'épargne, l'investissement et la planification financière, il aide les lecteurs à prendre des décisions éclairées pour améliorer leur budget.`,
     },
     shortBio: {
-      es: `Editor y especialista en vida con mascotas en ${siteConfig.siteName}. Apasionado por compartir consejos, destinos pet friendly y tendencias para tutores.`,
-      pt: `Editor e especialista em vida com pets no ${siteConfig.siteName}. Apaixonado por compartilhar dicas, destinos pet friendly e tendências para tutores.`,
-      en: `Editor and pet lifestyle specialist at ${siteConfig.siteName}. Passionate about sharing tips, pet-friendly destinations and trends for pet owners.`,
-      fr: `Éditeur et spécialiste de la vie avec les animaux chez ${siteConfig.siteName}. Passionné par le partage de conseils, de destinations pet friendly et de tendances pour les propriétaires d'animaux.`,
+      es: `Editor y especialista en finanzas personales en ${siteConfig.siteName}. Comparte consejos prácticos sobre ahorro, inversión y tarjetas de crédito.`,
+      pt: `Editor e especialista em finanças pessoais no ${siteConfig.siteName}. Compartilha dicas práticas sobre poupança, investimento e cartões de crédito.`,
+      en: `Editor and personal finance specialist at ${siteConfig.siteName}. Shares practical tips on saving, investing and credit cards.`,
+      fr: `Éditeur et spécialiste des finances personnelles chez ${siteConfig.siteName}. Partage conseils pratiques sur l'épargne, l'investissement et les cartes de crédit.`,
     },
     social: {},
   },
@@ -40,22 +40,22 @@ export const authors: AuthorData[] = [
     slug: 'carlos-almeida',
     image: '/imagens/avatar-author/carlos-almeida.svg',
     role: {
-      es: 'Especialista en Razas y Comportamiento Animal',
-      pt: 'Especialista em Raças e Comportamento Animal',
-      en: 'Pet Breeds & Animal Behavior Specialist',
-      fr: 'Spécialiste des Races et du Comportement Animal',
+      es: 'Especialista en Inversiones',
+      pt: 'Especialista em Investimentos',
+      en: 'Investment Specialist',
+      fr: 'Spécialiste en Investissement',
     },
     bio: {
-      es: `Carlos Almeida, de 41 años, es uno de los principales columnistas de ${siteConfig.siteName}, donde comparte su profundo conocimiento sobre razas, perfiles de mascotas y comportamiento animal.\n\nSu enfoque se centra en ayudar a los tutores a entender mejor a sus animales, eligiendo la raza adecuada para su estilo de vida y fomentando vínculos más fuertes y afectuosos. Carlos cree que conocer a fondo a tu mascota es el primer paso para una convivencia feliz y armoniosa.`,
-      pt: `Carlos Almeida, de 41 anos, é um dos principais colunistas do ${siteConfig.siteName}, onde compartilha seu profundo conhecimento sobre raças, perfis de pets e comportamento animal.\n\nSeu foco é ajudar tutores a entender melhor seus animais, escolhendo a raça ideal para seu estilo de vida e fortalecendo vínculos mais carinhosos. Carlos acredita que conhecer a fundo o seu pet é o primeiro passo para uma convivência feliz e harmoniosa.`,
-      en: `Carlos Almeida, 41, is one of the main columnists at ${siteConfig.siteName}, where he shares his deep knowledge about breeds, pet profiles and animal behavior.\n\nHis focus is on helping owners better understand their animals, choosing the right breed for their lifestyle and fostering stronger, more loving bonds. Carlos believes that truly knowing your pet is the first step toward a happy and harmonious coexistence.`,
-      fr: `Carlos Almeida, 41 ans, est l'un des principaux chroniqueurs de ${siteConfig.siteName}, où il partage ses connaissances approfondies sur les races, les profils d'animaux et le comportement animal.\n\nSon objectif est d'aider les propriétaires à mieux comprendre leurs animaux, à choisir la race adaptée à leur mode de vie et à renforcer des liens plus affectueux. Carlos croit que bien connaître son animal est la première étape vers une cohabitation heureuse et harmonieuse.`,
+      es: `Carlos Almeida, de 41 años, es columnista en ${siteConfig.siteName} especializado en inversión y mercados. Aporta análisis sobre estrategias de inversión, gestión de carteras y selección de activos para distintos perfiles de riesgo.`,
+      pt: `Carlos Almeida, de 41 anos, é colunista no ${siteConfig.siteName} especializado em investimento e mercados. Fornece análises sobre estratégias de investimento, gestão de carteira e seleção de ativos para diferentes perfis de risco.`,
+      en: `Carlos Almeida, 41, is a columnist at ${siteConfig.siteName} specializing in investment and markets. He provides analysis on investment strategies, portfolio management and asset selection for different risk profiles.`,
+      fr: `Carlos Almeida, 41 ans, est chroniqueur chez ${siteConfig.siteName} spécialisé dans l'investissement et les marchés. Il propose des analyses sur les stratégies d'investissement, la gestion de portefeuille et la sélection d'actifs.`,
     },
     shortBio: {
-      es: `Especialista en razas y comportamiento animal en ${siteConfig.siteName}. Ayuda a tutores a elegir la mascota ideal y fortalecer el vínculo con sus animales.`,
-      pt: `Especialista em raças e comportamento animal no ${siteConfig.siteName}. Ajuda tutores a escolher o pet ideal e fortalecer o vínculo com seus animais.`,
-      en: `Pet breeds and animal behavior specialist at ${siteConfig.siteName}. Helps owners choose the ideal pet and strengthen their bond with animals.`,
-      fr: `Spécialiste des races et du comportement animal chez ${siteConfig.siteName}. Aide les propriétaires à choisir l'animal idéal et à renforcer leur lien avec leurs compagnons.`,
+      es: `Especialista en inversiones en ${siteConfig.siteName}. Análisis y estrategias para invertir con sentido.`,
+      pt: `Especialista em investimentos no ${siteConfig.siteName}. Análises e estratégias para investir com propósito.`,
+      en: `Investment specialist at ${siteConfig.siteName}. Analysis and strategies to invest wisely.`,
+      fr: `Spécialiste en investissement chez ${siteConfig.siteName}. Analyses et stratégies pour investir intelligemment.`,
     },
     social: {},
   },
@@ -64,22 +64,22 @@ export const authors: AuthorData[] = [
     slug: 'lucas-moraes',
     image: '/imagens/avatar-author/lucas-moraes.svg',
     role: {
-      es: 'Experto en Actividades y Diversión con Mascotas',
-      pt: 'Especialista em Atividades e Diversão com Pets',
-      en: 'Pet Activities & Fun Expert',
-      fr: 'Expert en Activités et Amusement avec les Animaux',
+      es: 'Especialista en Educación Financiera',
+      pt: 'Especialista em Educação Financeira',
+      en: 'Personal Finance Education Specialist',
+      fr: 'Spécialiste en Éducation Financière',
     },
     bio: {
-      es: `Lucas Moraes, de 34 años, es redactor en ${siteConfig.siteName}, especializado en actividades, juegos y experiencias divertidas para mascotas y sus tutores.\n\nCon una mirada siempre atenta a las novedades del mundo pet, Lucas explora parques, eventos y destinos pet friendly, trayendo sugerencias para quienes quieren ampliar las aventuras junto a sus animales. Su misión es inspirar a más personas a crear rutinas activas, estimulantes y llenas de alegría con sus mascotas.`,
-      pt: `Lucas Moraes, de 34 anos, é redator no ${siteConfig.siteName}, especializado em atividades, brincadeiras e experiências divertidas para pets e seus tutores.\n\nSempre atento às novidades do mundo pet, Lucas explora parques, eventos e destinos pet friendly, trazendo sugestões para quem quer ampliar as aventuras ao lado dos animais. Sua missão é inspirar mais pessoas a criarem rotinas ativas, estimulantes e cheias de alegria com seus pets.`,
-      en: `Lucas Moraes, 34, is a writer at ${siteConfig.siteName}, specialized in activities, games and fun experiences for pets and their owners.\n\nAlways keeping an eye on the latest in the pet world, Lucas explores parks, events and pet-friendly destinations, bringing suggestions for those who want to expand adventures with their animals. His mission is to inspire more people to create active, stimulating and joyful routines with their pets.`,
-      fr: `Lucas Moraes, 34 ans, est rédacteur chez ${siteConfig.siteName}, spécialisé dans les activités, les jeux et les expériences amusantes pour les animaux et leurs propriétaires.\n\nToujours à l'affût des nouveautés du monde animal, Lucas explore parcs, événements et destinations pet friendly, proposant des suggestions pour ceux qui souhaitent multiplier les aventures avec leurs animaux. Sa mission est d'inspirer davantage de personnes à créer des routines actives, stimulantes et joyeuses avec leurs compagnons.`,
+      es: `Lucas Moraes, de 34 años, es redactor en ${siteConfig.siteName}, especializado en educación financiera y hábitos de consumo responsable. Publica guías prácticas para ahorrar, presupuestar y mejorar la salud financiera personal.`,
+      pt: `Lucas Moraes, de 34 anos, é redator no ${siteConfig.siteName}, especializado em educação financeira e hábitos de consumo responsável. Publica guias práticos para poupar, orçar e melhorar a saúde financeira pessoal.`,
+      en: `Lucas Moraes, 34, is a writer at ${siteConfig.siteName}, specialized in personal finance education and responsible spending habits. He publishes practical guides on saving, budgeting and improving financial health.`,
+      fr: `Lucas Moraes, 34 ans, est rédacteur chez ${siteConfig.siteName}, spécialisé dans l'éducation financière et les habitudes de consommation responsables. Il publie des guides pratiques sur l'épargne, la gestion du budget et la santé financière.`,
     },
     shortBio: {
-      es: `Experto en actividades y diversión con mascotas en ${siteConfig.siteName}. Inspira a tutores a crear rutinas activas y aventureras junto a sus animales.`,
-      pt: `Especialista em atividades e diversão com pets no ${siteConfig.siteName}. Inspira tutores a criarem rotinas ativas e aventureiras com seus animais.`,
-      en: `Pet activities and fun expert at ${siteConfig.siteName}. Inspires owners to create active and adventurous routines with their animals.`,
-      fr: `Expert en activités et amusement avec les animaux chez ${siteConfig.siteName}. Inspire les propriétaires à créer des routines actives et aventureuses avec leurs compagnons.`,
+      es: `Especialista en educación financiera en ${siteConfig.siteName}. Guías prácticas para ahorrar y presupuestar.`,
+      pt: `Especialista em educação financeira no ${siteConfig.siteName}. Guias práticos para poupar e orçar.`,
+      en: `Personal finance education specialist at ${siteConfig.siteName}. Practical guides for saving and budgeting.`,
+      fr: `Spécialiste en éducation financière chez ${siteConfig.siteName}. Guides pratiques pour épargner et gérer son budget.`,
     },
     social: {},
   },
@@ -88,42 +88,40 @@ export const authors: AuthorData[] = [
     slug: 'felipe-pires',
     image: '/imagens/avatar-author/felipe-pires.svg',
     role: {
-      es: 'Especialista en Curiosidades y Tendencias Pet',
-      pt: 'Especialista em Curiosidades e Tendências Pet',
-      en: 'Pet Curiosities & Trends Specialist',
-      fr: 'Spécialiste des Curiosités et Tendances Animaux',
+      es: 'Especialista en Tendencias Financieras',
+      pt: 'Especialista em Tendências Financeiras',
+      en: 'Financial Trends Specialist',
+      fr: 'Spécialiste des Tendances Financières',
     },
     bio: {
-      es: `Felipe Pires, de 37 años, es columnista en ${siteConfig.siteName}, especializado en curiosidades fascinantes y tendencias del universo de los animales de estimación.\n\nCon una mirada curiosa y apasionada, Felipe investiga comportamientos sorprendentes, hechos poco conocidos y las últimas novedades del mundo pet para traer contenidos que encantan y sorprenden a los tutores. Su objetivo es acercar a las personas a sus mascotas con más información, empatía y afecto.`,
-      pt: `Felipe Pires, de 37 anos, é colunista no ${siteConfig.siteName}, especializado em curiosidades fascinantes e tendências do universo dos animais de estimação.\n\nCom um olhar curioso e apaixonado, Felipe pesquisa comportamentos surpreendentes, fatos pouco conhecidos e as últimas novidades do mundo pet para trazer conteúdos que encantam e surpreendem os tutores. Seu objetivo é aproximar as pessoas dos seus animais com mais informação, empatia e carinho.`,
-      en: `Felipe Pires, 37, is a columnist at ${siteConfig.siteName}, specialized in fascinating curiosities and trends from the pet world.\n\nWith a curious and passionate eye, Felipe researches surprising behaviors, little-known facts and the latest news from the pet universe to bring content that delights and amazes pet owners. His goal is to bring people closer to their animals with more information, empathy and affection.`,
-      fr: `Felipe Pires, 37 ans, est chroniqueur chez ${siteConfig.siteName}, spécialisé dans les curiosités fascinantes et les tendances du monde des animaux de compagnie.\n\nAvec un regard curieux et passionné, Felipe explore des comportements surprenants, des faits peu connus et les dernières actualités du monde animal pour proposer des contenus qui enchantent et étonnent les propriétaires. Son objectif est de rapprocher les personnes de leurs animaux grâce à plus d'informations, d'empathie et d'affection.`,
+      es: `Felipe Pires, de 37 años, es columnista en ${siteConfig.siteName} especializado en tendencias financieras y novedades del sector bancario y fintech. Investiga productos, nuevas herramientas y comportamientos del mercado para ofrecer análisis claros y útiles.`,
+      pt: `Felipe Pires, de 37 anos, é colunista no ${siteConfig.siteName}, especializado em tendências financeiras e novidades do setor bancário e fintech. Pesquisa produtos, novas ferramentas e comportamentos de mercado para oferecer análises claras e úteis.`,
+      en: `Felipe Pires, 37, is a columnist at ${siteConfig.siteName} specializing in financial trends and fintech. He researches products, tools and market behaviors to provide clear and useful analysis.`,
+      fr: `Felipe Pires, 37 ans, est chroniqueur chez ${siteConfig.siteName} spécialisé dans les tendances financières et la fintech. Il étudie les produits, les outils et les comportements du marché pour fournir des analyses claires et utiles.`,
     },
     shortBio: {
-      es: `Especialista en curiosidades y tendencias pet en ${siteConfig.siteName}. Apasionado por acercar a los tutores a sus mascotas con información sorprendente y actual.`,
-      pt: `Especialista em curiosidades e tendências pet no ${siteConfig.siteName}. Apaixonado por aproximar tutores dos seus animais com informações surpreendentes e atuais.`,
-      en: `Pet curiosities and trends specialist at ${siteConfig.siteName}. Passionate about bringing pet owners closer to their animals with surprising and up-to-date information.`,
-      fr: `Spécialiste des curiosités et tendances animaux chez ${siteConfig.siteName}. Passionné pour rapprocher les propriétaires de leurs animaux grâce à des informations surprenantes et actuelles.`,
+      es: `Especialista en tendencias financieras en ${siteConfig.siteName}. Analiza productos bancarios y fintech.`,
+      pt: `Especialista em tendências financeiras no ${siteConfig.siteName}. Analisa produtos bancários e fintech.`,
+      en: `Financial trends specialist at ${siteConfig.siteName}. Analyzes banking products and fintech.`,
+      fr: `Spécialiste des tendances financières chez ${siteConfig.siteName}. Analyse produits bancaires et fintech.`,
     },
     social: {},
   },
 ];
 
-/** Find author by slug */
-export function getAuthorBySlug(slug: string): AuthorData | undefined {
-  return authors.find((a) => a.slug === slug);
-}
-
-/** Find author by name */
 export function getAuthorByName(name: string): AuthorData | undefined {
-  return authors.find((a) => a.name === name);
+  return authors.find(a => a.name.toLowerCase() === name.toLowerCase() || a.slug === name);
 }
 
-/** Convert author name to slug */
 export function authorNameToSlug(name: string): string {
+  const a = authors.find(x => x.name.toLowerCase() === name.toLowerCase());
+  if (a) return a.slug;
   return name
     .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, '-');
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+}
+
+export function getAuthorBySlug(slug: string): AuthorData | undefined {
+  return authors.find(a => a.slug === slug);
 }

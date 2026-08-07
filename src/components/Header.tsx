@@ -45,20 +45,21 @@ export default function Header() {
 
   return (
     <header className="shadow-lg" style={{ backgroundColor: brandColors.navBg }}>
-      <div className="max-w-7xl mx-auto w-full flex items-center h-[64px] xl:h-[90px] gap-3 px-4 sm:gap-4 sm:px-6">
+      <div className="max-w-7xl mx-auto w-full flex items-center justify-center h-[64px] xl:h-[90px] gap-3 px-4 sm:gap-4 sm:px-6">
 
-        {/* Logo */}
-        <a
-          href={homeHref}
-          onClick={closeAll}
-          className="flex items-center shrink-0"
-          aria-label={`${siteConfig.siteName} - inicio`}
-        >
-          <img src={siteConfig.logo} alt={siteConfig.siteName} className="h-11 xl:h-[72px] max-w-[160px] xl:max-w-[210px] w-auto object-contain" />
-        </a>
+        <div className="flex items-center gap-4">
+          {/* Logo */}
+          <a
+            href={homeHref}
+            onClick={closeAll}
+            className="flex items-center flex-shrink-0 mr-8"
+            aria-label={`${siteConfig.siteName} - inicio`}
+          >
+            <img src={siteConfig.logo} alt={siteConfig.siteName} className="h-11 xl:h-[72px] max-w-[160px] xl:max-w-[210px] w-auto object-contain" />
+          </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden xl:flex items-center gap-4 2xl:gap-8 flex-1 justify-center" aria-label="Navegación principal">
+          {/* Desktop Nav */}
+          <nav className="hidden xl:flex items-center gap-4 2xl:gap-8 flex-none mr-8" aria-label="Navegación principal">
           {navLinks.map((link) => (
             <a
               key={link.cat.slug}
@@ -74,8 +75,8 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Desktop right - search */}
-        <div className="hidden xl:flex items-center gap-3 shrink-0">
+          {/* Desktop right - search */}
+          <div className="hidden xl:flex items-center gap-3 shrink-0">
           {/* Search */}
           <form
             onSubmit={handleSearch}
@@ -118,6 +119,7 @@ export default function Header() {
               />
             </svg>
           </button>
+        </div>
         </div>
       </div>
 

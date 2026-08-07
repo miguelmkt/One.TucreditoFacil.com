@@ -11,7 +11,7 @@
  */
 import rawCategories from './categories.json';
 
-const FALLBACK_SITE_URL = 'https://zynovu.com';
+const FALLBACK_SITE_URL = 'https://one.tucreditofacil.com';
 
 function normalizeSiteUrl(value: string): string {
   return value.replace(/\/+$/, '');
@@ -65,26 +65,26 @@ export function categoryNavLines(name: string): [string, string] {
 // Altere apenas aqui para mudar as cores em todo o site
 export const brandColors = {
   primary: '#000000',           // cor principal (títulos footer, hover categorias header)
-  navBg: '#2C0C4B',             // fundo da header e do footer
+  navBg: '#000000',             // fundo da header e do footer
   navText: '#ffffff',           // cor do texto das categorias no header
   footerText: '#ffffff',        // cor do texto dos títulos do footer (Sobre Nosotros, Información Legal)
   footerLink: '#80807C',        // cor fixa dos links do footer (sem hover)
-  headerNavHover: '#84C002',    // cor do hover das categorias na header
+  headerNavHover: '#009fb4',    // cor do hover das categorias na header
   bgGray: '#f5f5f5',            // fundo cinza das páginas (Quiénes somos)
-  secondary: '#84C002',         // cor secundária (botões, links, destaques, hover categorias)
+  secondary: '#009fb4',         // cor secundária (botões, links, destaques, hover categorias)
 } as const;
 
 export const siteConfig = {
-  siteName: 'zynovu.com',
+  siteName: 'One.TucreditoFacil',
   siteUrl: resolveSiteUrl(),
   niche: 'finanzas personales',
   language: 'es',
   description:
-    'Inspire-se com conteúdos sobre convivência, locais pet friendly, tendências e experiências para aproveitar uma rotina mais agradável com seu animal de estimação.',
-  ctaText: 'Solicitar préstamo ahora',
-  ctaUrl: `${resolveSiteUrl()}/solicitar-prestamo`,
-  twitterHandle: '@zynovu',
-  contactEmail: 'hola@zynovu.com',
+    'Conteúdos e guias práticos sobre finanças pessoais: economia doméstica, investimentos, cartões e empréstimos para ajudar você a tomar decisões financeiras inteligentes.',
+  ctaText: 'Veja ofertas e ferramentas financeiras',
+  ctaUrl: `${resolveSiteUrl()}/financas`,
+  twitterHandle: '@OneTucreditoFacil',
+  contactEmail: 'hola@one.tucreditofacil.com',
 
   // Imagens — altere aqui para trocar logo e favicon em todo o site renomeie para o nome da imagem que for adicionada na pasta public/assets
   logo: '/imagens/img-principal/logo.png',

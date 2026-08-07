@@ -9,29 +9,29 @@ export interface CategoryI18n {
 }
 
 export const categoryTranslations: Record<string, Record<Lang, CategoryI18n>> = {
-  'estilo-de-vida-pet': {
-    es: { name: 'Estilo de Vida con Mascotas' },
-    pt: { name: 'Estilo de Vida Pet' },
-    en: { name: 'Pet Lifestyle' },
-    fr: { name: 'Style de Vie des Animaux' },
+  'educacao-financeira': {
+    es: { name: 'Educación Financiera' },
+    pt: { name: 'Educação Financeira' },
+    en: { name: 'Financial Education' },
+    fr: { name: 'Éducation Financière' },
   },
-  'atividades-e-diversao-com-pets': {
-    es: { name: 'Actividades y Diversión con Mascotas' },
-    pt: { name: 'Atividades e Diversão com Pets' },
-    en: { name: 'Activities & Fun with Pets' },
-    fr: { name: 'Activités et Amusement avec les Animaux' },
+  'investimento-inteligente': {
+    es: { name: 'Inversión Inteligente' },
+    pt: { name: 'Investimento Inteligente' },
+    en: { name: 'Smart Investing' },
+    fr: { name: 'Investissement Intelligent' },
   },
-  'racas-e-perfis-de-pets': {
-    es: { name: 'Razas y Perfiles de Mascotas' },
-    pt: { name: 'Raças e Perfis de Pets' },
-    en: { name: 'Pet Breeds & Profiles' },
-    fr: { name: "Races et Profils d'Animaux" },
+  'cartoes-de-credito': {
+    es: { name: 'Tarjetas de Crédito' },
+    pt: { name: 'Cartões de Crédito' },
+    en: { name: 'Credit Cards' },
+    fr: { name: 'Cartes de Crédit' },
   },
-  'curiosidades-sobre-animais': {
-    es: { name: 'Curiosidades sobre Animales de Compañía' },
-    pt: { name: 'Curiosidades Sobre Animais de Estimação' },
-    en: { name: 'Fun Facts About Pets' },
-    fr: { name: 'Curiosités sur les Animaux de Compagnie' },
+  'emprestimos-pessoais': {
+    es: { name: 'Préstamos Personales' },
+    pt: { name: 'Empréstimos Pessoais' },
+    en: { name: 'Personal Loans' },
+    fr: { name: 'Prêts Personnels' },
   },
 };
 

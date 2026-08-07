@@ -2,10 +2,10 @@
 import { useLang } from '../i18n/LangContext';
 
 const footerDesc: Record<string, string> = {
-  es: 'Inspírate con contenidos sobre convivencia, lugares pet friendly, tendencias y experiencias para disfrutar una rutina más agradable con tu mascota.',
-  pt: 'Inspire-se com conteúdos sobre convivência, locais pet friendly, tendências e experiências para aproveitar uma rotina mais agradável com seu animal de estimação.',
-  en: 'Get inspired with content about coexistence, pet-friendly places, trends and experiences to enjoy a more pleasant routine with your pet.',
-  fr: "Inspirez-vous avec des contenus sur la cohabitation, les endroits pet friendly, les tendances et les expériences pour profiter d'une routine plus agréable avec votre animal.",
+  es: 'Inspírate con contenidos sobre finanzas personales: ahorro, inversión, tarjetas y préstamos para mejorar tu economía.',
+  pt: 'Inspire-se com conteúdos sobre finanças pessoais: poupança, investimento, cartões e empréstimos para melhorar sua economia.',
+  en: 'Get inspired with content about personal finance: saving, investing, credit cards and loans to improve your finances.',
+  fr: 'Inspirez-vous avec des contenus sur les finances personnelles : épargne, investissement, cartes et prêts pour améliorer votre budget.',
 };
 
 export default function Footer() {

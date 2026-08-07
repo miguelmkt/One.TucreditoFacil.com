@@ -21,7 +21,7 @@ const POSTS_DIR = join(ROOT, 'src', 'content', 'posts');
 const PUBLIC_DIR = join(ROOT, 'public');
 
 // ── Config ──────────────────────────────────────────────────────────────────
-const FALLBACK_SITE_URL = 'https://zynovu.com';
+const FALLBACK_SITE_URL = 'https://one.tucreditofacil.com';
 const SITE_URL = normalizeSiteUrl(process.env.SITE_URL || process.env.VITE_SITE_URL || FALLBACK_SITE_URL);
 const SUPPORTED_LANGS = ['es', 'pt', 'en', 'fr'];
 
