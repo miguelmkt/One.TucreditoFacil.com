@@ -8,7 +8,7 @@ import { useLang } from '../i18n/LangContext';
 import ResponsiveImage from '../components/ResponsiveImage';
 
 declare global {
-  interface Window { adsbygoogle: unknown[] }
+  interface Window { adsbygoogle: unknown[]; __startAdsLoader?: () => void; __removeAdsLoader?: () => void; }
 }
 
 function lp(lang: string, path: string) {
@@ -30,7 +30,9 @@ export default function P1Page() {
 
   useEffect(() => {
     window.adsbygoogle = window.adsbygoogle || [];
-  }, []);
+    window.__startAdsLoader?.();
+    return () => { window.__removeAdsLoader?.(); };
+  }, [slug, lang]);
 
   if (!p1) return <Navigate to="/404" replace />;
 

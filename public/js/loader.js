@@ -142,84 +142,47 @@ color:rgba(81,183,85,0.7);
 			}
 			state.loader = loader;
 
-			var minTime = 1800;
-
 			function removeLoader(){
 				if(state.removed) return;
-				var elapsed = Date.now() - state.startTime;
-				var wait = Math.max(0, minTime - elapsed);
-
-				// limpar timeouts anteriores
-				state.timeouts.forEach(function(t){ clearTimeout(t); });
-				state.timeouts = [];
-
 				state.removed = true;
 
-				var t = setTimeout(function(){
-					try{ state.loader.classList.remove('loader--show'); }catch(e){}
-					var t2 = setTimeout(function(){ try{ if(state.loader && state.loader.parentNode) state.loader.parentNode.removeChild(state.loader); }catch(e){} },400);
-					state.timeouts.push(t2);
-				}, wait);
-				state.timeouts.push(t);
+				state.timeouts.forEach(function(t){ clearTimeout(t); });
+				state.timeouts = [];
 
 				if(state.interval){ clearInterval(state.interval); state.interval = null; }
 				if(state.observer){ try{ state.observer.disconnect(); }catch(e){} state.observer = null; }
 				state.active = false;
+
+				try{ state.loader.classList.remove('loader--show'); }catch(e){}
+				var t = setTimeout(function(){ try{ if(state.loader && state.loader.parentNode) state.loader.parentNode.removeChild(state.loader); }catch(e){} }, 400);
+				state.timeouts.push(t);
 			}
 
 			state.removeLoader = removeLoader;
 
-			function adsResolved(){
+			function adBlockVisible(){
 				var ads = document.querySelectorAll('ins.adsbygoogle');
-				if(ads.length === 0) return false;
-				var resolved = 0;
 				for(var i = 0; i < ads.length; i++){
 					var ad = ads[i];
-					var status = ad.getAttribute('data-ad-status');
-					// AdSense sets filled or unfilled once it processes the slot
-					if(status === 'filled' || status === 'unfilled'){
-						resolved++;
-						continue;
-					}
-					// fallback: iframe present and slot has visible size
+					if(ad.getAttribute('data-ad-status') === 'filled') return true;
 					var iframe = ad.querySelector('iframe');
-					if(iframe && (ad.offsetHeight > 50 || ad.offsetWidth > 50)){
-						resolved++;
-					}
+					if(iframe && ad.offsetHeight > 50 && ad.offsetWidth > 50) return true;
 				}
-				return resolved > 0;
+				var adex = document.querySelectorAll('[joinadscode]');
+				for(var j = 0; j < adex.length; j++){
+					var b = adex[j];
+					if((b.querySelector('iframe') || b.children.length > 0) && b.offsetHeight > 10 && b.offsetWidth > 10) return true;
+				}
+				return false;
 			}
 
 			function checkAds(){
-				if(adsResolved()){
-					var t = setTimeout(function(){ removeLoader(); }, 600);
-					state.timeouts.push(t);
-					return;
-				}
-
-				// AdEx / joinadscode blocks
-				var adexBlocks = document.querySelectorAll('[joinadscode]');
-				for(var j = 0; j < adexBlocks.length; j++){
-					var block = adexBlocks[j];
-					var iframe2 = block.querySelector('iframe');
-					var hasContent = iframe2 || (block.children.length > 0 && block.innerHTML.trim() !== '');
-					if(hasContent && (block.offsetHeight > 10 || block.offsetWidth > 10)){
-						var t2 = setTimeout(function(){ removeLoader(); }, 600);
-						state.timeouts.push(t2);
-						return;
-					}
-				}
-			}
-
-			function noAdsOnPage(){
-				return document.querySelectorAll('ins.adsbygoogle').length === 0 &&
-				       document.querySelectorAll('[joinadscode]').length === 0;
+				if(adBlockVisible()) removeLoader();
 			}
 
 			if(state.observer){ try{ state.observer.disconnect(); }catch(e){} }
 			state.observer = new MutationObserver(function(){ checkAds(); });
 			try{
-				// subtree + attributes catches data-ad-status being set by AdSense
 				state.observer.observe(document.body, {
 					childList: true,
 					subtree: true,
@@ -228,22 +191,17 @@ color:rgba(81,183,85,0.7);
 				});
 			}catch(e){}
 
-			// run once immediately in case ads already resolved before observer attached
 			checkAds();
 
 			if(state.interval) clearInterval(state.interval);
 			state.interval = setInterval(function(){
 				checkAds();
 				if(state.removed){ clearInterval(state.interval); state.interval = null; if(state.observer){ try{ state.observer.disconnect(); }catch(e){} state.observer = null; } }
-			},700);
+			}, 500);
 
-			// if no ad slots appear within 2.5 s, dismiss (blocked / no ads)
-			var fb1 = setTimeout(function(){ if(!state.removed && noAdsOnPage()) removeLoader(); }, 2500);
-			state.timeouts.push(fb1);
-
-			// hard cap to avoid locking the page
-			var fb2 = setTimeout(function(){ if(!state.removed) removeLoader(); }, 5000);
-			state.timeouts.push(fb2);
+			// 7 s hard fallback
+			var fb = setTimeout(function(){ if(!state.removed) removeLoader(); }, 7000);
+			state.timeouts.push(fb);
 		}
 
 		// expor funções globais para SPA

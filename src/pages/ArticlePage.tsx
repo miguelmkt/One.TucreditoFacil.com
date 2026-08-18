@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { getPostBySlug, getPostBySlugAndLang, getPostsByLang, getArticleTranslations } from '../data/posts';
 import { brandColors, siteCategories } from '../config/siteConfig';
@@ -12,7 +13,7 @@ import { authorNameToSlug } from '../data/authors';
 import { getCategoryI18n } from '../i18n/categories';
 
 declare global {
-  interface Window { adsbygoogle: unknown[] }
+  interface Window { adsbygoogle: unknown[]; __startAdsLoader?: () => void; __removeAdsLoader?: () => void; }
 }
 
 function lp(lang: string, path: string) {
@@ -22,6 +23,11 @@ function lp(lang: string, path: string) {
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const { lang, t } = useLang();
+
+  useEffect(() => {
+    window.__startAdsLoader?.();
+    return () => { window.__removeAdsLoader?.(); };
+  }, [slug, lang]);
 
 
 
