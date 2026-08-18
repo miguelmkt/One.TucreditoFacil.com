@@ -1,4 +1,5 @@
 ﻿import { useState } from 'react';
+import { appendUtm } from '../lib/utmUtils';
 import { siteConfig, siteCategories, categoryNavLines, brandColors } from '../config/siteConfig';
 import { useLang } from '../i18n/LangContext';
 import { getCategoryI18n } from '../i18n/categories';
@@ -31,9 +32,9 @@ export default function Header() {
     const base = lang === 'es' ? '' : `/${lang}`;
     
     if (q) {
-      window.location.href = `${base}/?q=${encodeURIComponent(q)}`;
+      window.location.href = appendUtm(`${base}/?q=${encodeURIComponent(q)}`);
     } else {
-      window.location.href = `${base}/`;
+      window.location.href = appendUtm(`${base}/`);
     }
   }
 

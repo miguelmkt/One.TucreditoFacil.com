@@ -1,4 +1,5 @@
 import { useLang } from '../i18n/LangContext';
+import { appendUtm } from '../lib/utmUtils';
 import { authors } from '../data/authors';
 
 export default function EspecialistasPage() {
@@ -26,7 +27,7 @@ export default function EspecialistasPage() {
             const authorUrl = lang === 'es' ? `/a/${author.slug}/` : `/${lang}/a/${author.slug}/`;
             const descripcion = (author.shortBio as any)[lang] ?? author.shortBio.pt;
             return (
-              <div key={author.slug} role="link" onClick={() => { window.location.href = authorUrl; }} className="bg-white rounded-sm p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow cursor-pointer" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.07)', border: '1px solid #f3f4f6' }}>
+              <div key={author.slug} role="link" onClick={() => { window.location.href = appendUtm(authorUrl); }} className="bg-white rounded-sm p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow cursor-pointer" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.07)', border: '1px solid #f3f4f6' }}>
                 <div className="rounded-full p-0.5 sm:p-1 mb-3" style={{ border: '0.5px solid #111', background: '#fff' }}>
                   <div className="w-32 h-32 sm:w-24 sm:h-24 rounded-full overflow-hidden">
                     <img src={author.image} alt={author.name} className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }} />

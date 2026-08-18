@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { captureUtm, appendUtm } from './lib/utmUtils';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CookieBanner from './components/CookieBanner';
@@ -17,6 +19,37 @@ import { Helmet } from 'react-helmet';
 import { siteConfig, brandColors } from './config/siteConfig';
 import { LangProvider } from './i18n/LangContext';
 import { SUPPORTED_LANGS } from './i18n/translations';
+
+/** Captura UTMs na entrada e propaga em todos os cliques em links internos. */
+function UtmManager() {
+  const location = useLocation();
+
+  useEffect(() => {
+    captureUtm();
+  }, [location.search]);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      const anchor = (e.target as Element).closest('a');
+      if (!anchor || !anchor.href) return;
+      const isSameOrigin = anchor.hostname === window.location.hostname;
+      const isInternal = isSameOrigin && !anchor.target;
+      if (!isInternal) return;
+
+      const newHref = appendUtm(anchor.href);
+      if (newHref !== anchor.href) {
+        e.preventDefault();
+        anchor.href = newHref;
+        anchor.click();
+      }
+    }
+
+    document.addEventListener('click', handleClick, true);
+    return () => document.removeEventListener('click', handleClick, true);
+  }, []);
+
+  return null;
+}
 
 function SpanishLayout() {
   return (
@@ -46,6 +79,7 @@ function App() {
   return (
     <BrowserRouter>
       <>
+        <UtmManager />
         <style>{`
           :root {
             --brand-primary: ${brandColors.primary};
